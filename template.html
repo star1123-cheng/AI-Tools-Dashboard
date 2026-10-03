@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 教育與教學工具全彙整 智慧儀表板 | 祐誠老師</title>
+  <meta name="description" content="專為國小教學、班級經營與行政管理打造之 AI 數位資源導航庫，涵蓋六大主題與 120 款精選教育工具。">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ============================================================
+       CSS Variables & Themes
+       ============================================================ */
+    :root {
+      --font-sans: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --radius-full: 9999px;
+      --transition: all 0.2s ease;
+    }
+
+    [data-theme="dark"] {
+      --bg-body: #0b0f19;
+      --bg-surface: #111827;
+      --bg-surface-elevated: #1f2937;
+      --bg-card: #151d2f;
+      --bg-card-hover: #1b253b;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-active: rgba(16, 185, 129, 0.5);
+      --text-primary: #f9fafb;
+      --text-secondary: #9ca3af;
+      --text-muted: #6b7280;
+      --primary: #10b981;
+      --primary-hover: #059669;
+      --primary-light: rgba(16, 185, 129, 0.15);
+      --accent-cyan: #06b6d4;
+      --accent-blue: #3b82f6;
+      --accent-purple: #8b5cf6;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+      --badge-bg: rgba(255, 255, 255, 0.05);
+      --stat-bg: rgba(17, 24, 39, 0.7);
+    }
+
+    [data-theme="light"] {
+      --bg-body: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-surface-elevated: #f1f5f9;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f8fafc;
+      --border-subtle: #e2e8f0;
+      --border-active: rgba(16, 185, 129, 0.6);
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      --primary: #059669;
+      --primary-hover: #047857;
+      --primary-light: rgba(16, 185, 129, 0.1);
+      --accent-cyan: #0891b2;
+      --accent-blue: #2563eb;
+      --accent-purple: #7c3aed;
+      --accent-amber: #d97706;
+      --accent-rose: #e11d48;
+      --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.08);
+      --badge-bg: #f1f5f9;
+      --stat-bg: #ffffff;
+    }
+
+    /* Reset & Base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-body);
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.6;
+      transition: background-color 0.25s ease, color 0.25s ease;
+      position: relative;
+      overflow-x: hidden;
+      padding-bottom: 90px;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 30px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #10b981, #06b6d4);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+    }
+
+    .brand-text h1 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--text-primary) 30%, var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-text p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 1.1rem;
+    }
+
+    .btn-icon:hover {
+      border-color: var(--primary);
+    }
+
+    .btn-export {
+      padding: 9px 16px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-export:hover {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* KPI Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .stat-card {
+      background: var(--stat-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .stat-card:hover {
+      border-color: var(--border-active);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .stat-card.active {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .stat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      line-height: 1.1;
+      color: var(--text-primary);
+    }
+
+    .stat-badge {
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+    }
+
+    /* Control Panel */
+    .control-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 28px;
+    }
+
+    .search-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .search-box-wrapper {
+      flex: 1;
+      min-width: 280px;
+      position: relative;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 14px 44px 14px 48px;
+      font-size: 1rem;
+      font-family: var(--font-sans);
+      background: var(--bg-body);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      transition: var(--transition);
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-light);
+    }
+
+    .clear-search-btn {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1.1rem;
+      padding: 4px;
+      display: none;
+    }
+
+    .view-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .select-dropdown {
+      padding: 12px 18px;
+      background: var(--bg-body);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      font-weight: 500;
+      outline: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .view-toggle-btn {
+      padding: 10px 14px;
+      background: var(--bg-body);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    .view-toggle-btn.active {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* Category Tabs with Navigation Arrows */
+    .category-tabs-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      position: relative;
+    }
+
+    .category-tabs {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none; /* Firefox: 完全隱藏捲軸 */
+      -ms-overflow-style: none; /* IE and Edge */
+      flex: 1;
+      padding: 4px 0;
+    }
+
+    .category-tabs::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera: 完全隱藏捲軸 */
+      width: 0;
+      height: 0;
+    }
+
+    .tab-scroll-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.3rem;
+      font-weight: 700;
+      line-height: 1;
+      flex-shrink: 0;
+      transition: var(--transition);
+      user-select: none;
+    }
+
+    .tab-scroll-btn:hover {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .tab-pill {
+      white-space: nowrap;
+      padding: 9px 18px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      background: var(--bg-body);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tab-pill:hover {
+      border-color: var(--text-muted);
+      color: var(--text-primary);
+    }
+
+    .tab-pill.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    .tab-pill.tab-selfmade.active {
+      background: #2563eb;
+      color: #ffffff;
+      border-color: #2563eb;
+    }
+
+    .tab-count {
+      font-size: 0.75rem;
+      padding: 2px 7px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.2);
+      font-family: var(--font-mono);
+    }
+
+    .tab-pill:not(.active) .tab-count {
+      background: var(--badge-bg);
+      color: var(--text-muted);
+    }
+
+    /* Tag Filters */
+    .tag-filters-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding-top: 14px;
+      border-top: 1px dashed var(--border-subtle);
+    }
+
+    .tag-label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .filter-tag {
+      font-size: 0.8rem;
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      background: var(--badge-bg);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .filter-tag:hover {
+      border-color: var(--primary);
+      color: var(--text-primary);
+    }
+
+    .filter-tag.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* Results feedback */
+    .results-feedback {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 0 4px;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+    }
+
+    .results-count b {
+      color: var(--primary);
+      font-family: var(--font-mono);
+      font-size: 1.15rem;
+    }
+
+    .btn-reset-filters {
+      font-size: 0.82rem;
+      color: var(--accent-rose);
+      background: none;
+      border: 1px solid rgba(244, 63, 94, 0.3);
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-reset-filters:hover {
+      background: rgba(244, 63, 94, 0.1);
+    }
+
+    /* Tools Grid */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 24px;
+    }
+
+    .tool-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .tool-card:hover {
+      border-color: var(--border-active);
+      background: var(--bg-card-hover);
+    }
+
+    .tool-card.is-favorite {
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+
+    .tool-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      gap: 12px;
+    }
+
+    .cat-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .badge-cat1 { background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge-cat2 { background: rgba(139, 92, 246, 0.15); color: #8b5cf6; border: 1px solid rgba(139, 92, 246, 0.3); }
+    .badge-cat3 { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .badge-cat4 { background: rgba(236, 72, 153, 0.15); color: #ec4899; border: 1px solid rgba(236, 72, 153, 0.3); }
+    .badge-cat5 { background: rgba(14, 165, 233, 0.15); color: #0ea5e9; border: 1px solid rgba(14, 165, 233, 0.3); }
+    .badge-cat6 { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4); }
+
+    .btn-fav {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition: var(--transition);
+      padding: 2px;
+      line-height: 1;
+    }
+
+    .btn-fav:hover {
+      color: var(--accent-amber);
+    }
+
+    .btn-fav.active {
+      color: var(--accent-amber);
+    }
+
+    .tool-title {
+      font-size: 1.18rem;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 10px;
+      color: var(--text-primary);
+    }
+
+    .tool-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 18px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex-grow: 1;
+    }
+
+    .tool-tags-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .card-tag {
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: var(--badge-bg);
+      color: var(--text-muted);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .tool-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .btn-launch {
+      flex: 1;
+      padding: 10px 16px;
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .btn-launch:hover {
+      background: var(--primary-hover);
+    }
+
+    .btn-copy-link {
+      padding: 10px 14px;
+      background: var(--bg-body);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 0.88rem;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .btn-copy-link:hover {
+      border-color: var(--text-muted);
+      color: var(--text-primary);
+    }
+
+    /* Links badge */
+    .links-badge-group {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .extra-link-pill {
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      background: var(--badge-bg);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: var(--transition);
+    }
+    .extra-link-pill:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* List View */
+    .tools-list-view {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .tool-list-row {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      transition: var(--transition);
+    }
+
+    .tool-list-row:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-active);
+    }
+
+    .list-info-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .list-title-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+
+    .list-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .list-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .list-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    mark.highlight {
+      background: rgba(16, 185, 129, 0.35);
+      color: inherit;
+      padding: 0 2px;
+      border-radius: 2px;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--text-muted);
+    }
+    .empty-icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+    }
+    .empty-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+
+    /* ============================================================
+       WATERMARK: PURE FLAT SEMI-TRANSPARENT PILL (NO GREEN BG, LARGER FONT)
+       ============================================================ */
+    .watermark-container {
+      position: fixed;
+      bottom: 24px;
+      right: 28px;
+      z-index: 999;
+      pointer-events: auto;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .watermark-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 24px;
+      background: rgba(15, 23, 42, 0.72);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 9999px;
+      color: #ffffff;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      opacity: 0.85;
+      transition: opacity 0.2s ease, background-color 0.2s ease;
+    }
+
+    .watermark-pill:hover {
+      opacity: 1;
+      background: rgba(15, 23, 42, 0.9);
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    [data-theme="light"] .watermark-pill {
+      background: rgba(15, 23, 42, 0.75);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+    }
+
+    /* Toast */
+    .toast-container {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--bg-surface-elevated);
+      color: var(--text-primary);
+      border: 1px solid var(--border-active);
+      padding: 12px 24px;
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-md);
+      font-size: 0.92rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 1000;
+      opacity: 0;
+      transition: all 0.25s ease;
+      pointer-events: none;
+    }
+
+    .toast-container.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Author Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      padding: 20px;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      max-width: 500px;
+      width: 100%;
+      padding: 30px;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .tools-grid { grid-template-columns: 1fr; }
+      .navbar { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .nav-actions { width: 100%; justify-content: space-between; }
+      .watermark-container { bottom: 14px; right: 16px; }
+      .watermark-img { height: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="brand">
+        <div class="brand-icon">🎓</div>
+        <div class="brand-text">
+          <h1>AI 教育與教學工具全彙整 智慧儀表板</h1>
+          <p>國小教學備課 × 班級經營 × 行政效能 × 教師自製網站導航系統</p>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <button class="btn-export" id="btnExportJson" title="匯出完整資料為 JSON">
+          <span>📦</span> 匯出 JSON
+        </button>
+        <button class="btn-export" id="btnExportCsv" title="匯出完整資料為 CSV">
+          <span>📑</span> 匯出 CSV
+        </button>
+        <button class="btn-icon" id="themeToggleBtn" title="切換深色 / 淺色模式">
+          <span id="themeIcon">🌙</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- KPI Stats Summary Cards (Strict Category match) -->
+    <section class="stats-grid" id="statsGrid">
+      <div class="stat-card" data-cat="all">
+        <div class="stat-header">
+          <span>全部收錄工具</span>
+          <span class="stat-badge" style="background: var(--primary-light); color: var(--primary);">TOTAL</span>
+        </div>
+        <div class="stat-value" id="statTotalCount">120</div>
+      </div>
+      <div class="stat-card" data-cat="自製網站">
+        <div class="stat-header">
+          <span>🌐 自製網站</span>
+          <span class="stat-badge badge-cat6">CAT 6</span>
+        </div>
+        <div class="stat-value" id="statCat6Count">3</div>
+      </div>
+      <div class="stat-card" data-cat="🛠️ 一、綜合教學資源地圖與平台">
+        <div class="stat-header">
+          <span>🛠️ 綜合資源平台</span>
+          <span class="stat-badge badge-cat1">CAT 1</span>
+        </div>
+        <div class="stat-value" id="statCat1Count">16</div>
+      </div>
+      <div class="stat-card" data-cat="📚 二、學科教材、特教與專業學習資源">
+        <div class="stat-header">
+          <span>📚 學科與特教</span>
+          <span class="stat-badge badge-cat2">CAT 2</span>
+        </div>
+        <div class="stat-value" id="statCat2Count">24</div>
+      </div>
+      <div class="stat-card" data-cat="📝 三、測驗評量、審題與課堂管理">
+        <div class="stat-header">
+          <span>📝 評量與班管</span>
+          <span class="stat-badge badge-cat3">CAT 3</span>
+        </div>
+        <div class="stat-value" id="statCat3Count">23</div>
+      </div>
+      <div class="stat-card" data-cat="🎨 四、創意生成、提示詞與趣味遊戲">
+        <div class="stat-header">
+          <span>🎨 創意提示遊戲</span>
+          <span class="stat-badge badge-cat4">CAT 4</span>
+        </div>
+        <div class="stat-value" id="statCat4Count">22</div>
+      </div>
+      <div class="stat-card" data-cat="📂 五、行政、評語與 NotebookLM 進階工具">
+        <div class="stat-header">
+          <span>📂 行政與評語</span>
+          <span class="stat-badge badge-cat5">CAT 5</span>
+        </div>
+        <div class="stat-value" id="statCat5Count">32</div>
+      </div>
+    </section>
+
+    <!-- Control Panel -->
+    <section class="control-panel">
+      <!-- Search row -->
+      <div class="search-row">
+        <div class="search-box-wrapper">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" class="search-input" placeholder="搜尋工具名稱、功能說明、或關鍵字 (例如: Gemini, 評語, 特教, 學習單)..." autocomplete="off">
+          <button id="clearSearchBtn" class="clear-search-btn" title="清除搜尋">✕</button>
+        </div>
+        <div class="view-actions">
+          <select id="sortSelect" class="select-dropdown" title="選擇排序方式">
+            <option value="default">預設排序 (分類順序)</option>
+            <option value="name-asc">名稱筆劃 (A → Z)</option>
+            <option value="fav-first">我的收藏優先 ⭐</option>
+          </select>
+          <button class="view-toggle-btn active" id="btnGridView" title="切換為網格卡片視圖">
+            ▦
+          </button>
+          <button class="view-toggle-btn" id="btnListView" title="切換為緊湊清單視圖">
+            ☰
+          </button>
+        </div>
+      </div>
+
+      <!-- Category Tabs with Left/Right Navigation -->
+      <div class="category-tabs-wrapper">
+        <button class="tab-scroll-btn" id="btnTabScrollLeft" title="向左捲動標籤">‹</button>
+        <div class="category-tabs" id="categoryTabs">
+          <button class="tab-pill active" data-cat="all">
+            <span>🌟 全部工具</span>
+            <span class="tab-count" id="tabCountAll">120</span>
+          </button>
+          <button class="tab-pill" data-cat="自製網站">
+            <span>🌐 自製網站</span>
+            <span class="tab-count">3</span>
+          </button>
+          <button class="tab-pill" data-cat="🛠️ 一、綜合教學資源地圖與平台">
+            <span>🛠️ 一、綜合教學資源</span>
+            <span class="tab-count">16</span>
+          </button>
+          <button class="tab-pill" data-cat="📚 二、學科教材、特教與專業學習資源">
+            <span>📚 二、學科與特教教材</span>
+            <span class="tab-count">24</span>
+          </button>
+          <button class="tab-pill" data-cat="📝 三、測驗評量、審題與課堂管理">
+            <span>📝 三、測驗評量與班管</span>
+            <span class="tab-count">23</span>
+          </button>
+          <button class="tab-pill" data-cat="🎨 四、創意生成、提示詞與趣味遊戲">
+            <span>🎨 四、創意生成與遊戲</span>
+            <span class="tab-count">22</span>
+          </button>
+          <button class="tab-pill" data-cat="📂 五、行政、評語與 NotebookLM 進階工具">
+            <span>📂 五、行政評語與 NotebookLM</span>
+            <span class="tab-count">32</span>
+          </button>
+          <button class="tab-pill" data-cat="favorite">
+            <span>⭐ 我的收藏</span>
+            <span class="tab-count" id="tabCountFav">0</span>
+          </button>
+        </div>
+        <button class="tab-scroll-btn" id="btnTabScrollRight" title="向右捲動標籤">›</button>
+      </div>
+
+      <!-- Quick Tag Filter Pills -->
+      <div class="tag-filters-row" id="tagFiltersRow">
+        <span class="tag-label">🏷️ 熱門快篩：</span>
+        <button class="filter-tag" data-tag="Gemini">Gemini</button>
+        <button class="filter-tag" data-tag="NotebookLM">NotebookLM</button>
+        <button class="filter-tag" data-tag="評語生成">評語生成</button>
+        <button class="filter-tag" data-tag="特殊教育">特殊教育</button>
+        <button class="filter-tag" data-tag="學習單">學習單</button>
+        <button class="filter-tag" data-tag="班級經營">班級經營</button>
+        <button class="filter-tag" data-tag="遊戲化學習">遊戲化學習</button>
+        <button class="filter-tag" data-tag="測驗審題">測驗審題</button>
+        <button class="filter-tag" data-tag="提示詞庫">提示詞庫</button>
+        <button class="filter-tag" data-tag="學校行政">學校行政</button>
+        <button class="filter-tag" data-tag="試算表/GAS">試算表/GAS</button>
+        <button class="filter-tag" data-tag="Canva">Canva</button>
+      </div>
+    </section>
+
+    <!-- Feedback Bar -->
+    <div class="results-feedback">
+      <div class="results-count">
+        顯示中工具：<b id="visibleCount">120</b> / <span id="totalCountSpan">120</span> 項
+        <span id="activeFilterDesc" style="margin-left: 10px; color: var(--primary); font-weight: 600;"></span>
+      </div>
+      <div class="active-filters-badges">
+        <button class="btn-reset-filters" id="btnResetAllFilters" style="display: none;">
+          ✕ 重設篩選 (查看全部)
+        </button>
+      </div>
+    </div>
+
+    <!-- Tools Container: Grid or List -->
+    <main id="toolsContainer" class="tools-grid">
+      <!-- Tool cards will be rendered dynamically -->
+    </main>
+
+    <!-- Empty State -->
+    <div id="emptyState" class="empty-state" style="display: none;">
+      <div class="empty-icon">🔎</div>
+      <div class="empty-title">找不到符合條件的 AI 工具</div>
+      <p>請嘗試使用不同關鍵字、清除熱門快篩或點擊上方「全部工具」。</p>
+    </div>
+  </div>
+
+  <!-- Dedicated Flat Semi-transparent Watermark (Created by 祐誠老師) -->
+  <div class="watermark-container" id="watermarkWidget" title="Created by 祐誠老師">
+    <div class="watermark-pill">
+      Created by 祐誠老師
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-container" id="toastBox">
+    <span>📋</span>
+    <span id="toastMsg">已複製連結到剪貼簿！</span>
+  </div>
+
+  <!-- Author Modal -->
+  <div class="modal-overlay" id="authorModal">
+    <div class="modal-card">
+      <button class="modal-close" id="modalCloseBtn">✕</button>
+      <div style="margin-bottom: 18px;">
+        <div class="watermark-pill" style="display: inline-flex;">
+          Created by 祐誠老師
+        </div>
+      </div>
+      <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 10px;">關於此智慧儀表板</h3>
+      <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.7; margin-bottom: 16px;">
+        本儀表板收錄自 Notion 資料庫完整 120 款教育現場實用 AI 工具，涵蓋教學備課、特教、測驗評量、班級經營、行政公文與<b>祐誠老師專屬自製網站</b>。
+      </p>
+      <div style="background: var(--bg-body); padding: 14px 18px; border-radius: var(--radius-md); font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 20px;">
+        <div style="font-weight: 700; color: var(--text-primary); margin-bottom: 6px;">💡 操作提示：</div>
+        <div>• 點擊大項分類：<b>嚴格僅顯示該分類項目</b></div>
+        <div>• 點擊熱門快篩：自動全庫快速過濾相關主題</div>
+        <div>• 支援星號收藏與 JSON / CSV 資料隨時匯出</div>
+      </div>
+      <div style="text-align: right;">
+        <button class="btn-launch" id="modalConfirmBtn" style="padding: 8px 20px; display: inline-flex;">確認關閉</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Embedded Data & Client-side Script -->
+  <script>
+    // Embedded consolidated tools data
+    const TOOLS_DATA = {{TOOLS_DATA}};
+
+    // Quick filter keyword mapping (Guaranteed matches across name, desc, tags, category)
+    const QUICK_FILTER_KEYWORDS = {
+      'Gemini': ['gemini'],
+      'NotebookLM': ['notebooklm', 'nblm'],
+      '評語生成': ['評語'],
+      '特殊教育': ['特教', '特殊教育', 'sped', 'iep'],
+      '學習單': ['學習單', 'worksheet'],
+      '班級經營': ['班經', '座位', '排位', '出缺席', '打卡', '班親會'],
+      '遊戲化學習': ['遊戲', 'rpg', 'arcade', '拔河', '冒險', '對戰'],
+      '測驗審題': ['試題', '審題', '測驗', '段考', 'kahoot', 'wordwall'],
+      '提示詞庫': ['提示詞', 'prompt', '咒語', '指令'],
+      '學校行政': ['行政', '公文', '對帳', '文件', '手札'],
+      '試算表/GAS': ['gas', 'sheet', '試算表', 'excel', '程式碼'],
+      'Canva': ['canva']
+    };
+
+    // State
+    let currentFilter = {
+      search: '',
+      category: 'all',
+      tag: '',
+      sort: 'default',
+      viewMode: 'grid',
+      favoritesOnly: false
+    };
+
+    // Favorites
+    let favorites = new Set();
+    try {
+      const savedFavs = localStorage.getItem('yc_ai_favorites');
+      if (savedFavs) {
+        favorites = new Set(JSON.parse(savedFavs));
+      }
+    } catch(e) {}
+
+    // DOM Elements
+    const toolsContainer = document.getElementById('toolsContainer');
+    const emptyState = document.getElementById('emptyState');
+    const searchInput = document.getElementById('searchInput');
+    const clearSearchBtn = document.getElementById('clearSearchBtn');
+    const sortSelect = document.getElementById('sortSelect');
+    const btnGridView = document.getElementById('btnGridView');
+    const btnListView = document.getElementById('btnListView');
+    const categoryTabs = document.getElementById('categoryTabs');
+    const tagFiltersRow = document.getElementById('tagFiltersRow');
+    const visibleCount = document.getElementById('visibleCount');
+    const totalCountSpan = document.getElementById('totalCountSpan');
+    const tabCountFav = document.getElementById('tabCountFav');
+    const activeFilterDesc = document.getElementById('activeFilterDesc');
+    const btnResetAllFilters = document.getElementById('btnResetAllFilters');
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const toastBox = document.getElementById('toastBox');
+    const toastMsg = document.getElementById('toastMsg');
+    const watermarkWidget = document.getElementById('watermarkWidget');
+    const authorModal = document.getElementById('authorModal');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    const modalConfirmBtn = document.getElementById('modalConfirmBtn');
+
+    // Theme Switch
+    let currentTheme = 'dark';
+    try {
+      currentTheme = localStorage.getItem('yc_ai_theme') || 'dark';
+    } catch(e) {}
+    document.documentElement.setAttribute('data-theme', currentTheme);
+
+    function updateThemeIcon() {
+      if (themeIcon) {
+        themeIcon.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+      }
+    }
+    updateThemeIcon();
+
+    themeToggleBtn.addEventListener('click', () => {
+      currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      try { localStorage.setItem('yc_ai_theme', currentTheme); } catch(e) {}
+      updateThemeIcon();
+    });
+
+    // Toast
+    let toastTimer = null;
+    function showToast(msg) {
+      toastMsg.textContent = msg;
+      toastBox.classList.add('show');
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toastBox.classList.remove('show');
+      }, 2000);
+    }
+
+    // Modal
+    watermarkWidget.addEventListener('click', () => {
+      authorModal.classList.add('open');
+    });
+    modalCloseBtn.addEventListener('click', () => {
+      authorModal.classList.remove('open');
+    });
+    modalConfirmBtn.addEventListener('click', () => {
+      authorModal.classList.remove('open');
+    });
+    authorModal.addEventListener('click', (e) => {
+      if (e.target === authorModal) authorModal.classList.remove('open');
+    });
+
+    // Favorites
+    function toggleFavorite(id) {
+      if (favorites.has(id)) {
+        favorites.delete(id);
+        showToast('已自收藏清單移除');
+      } else {
+        favorites.add(id);
+        showToast('已加入星號收藏 ⭐');
+      }
+      try {
+        localStorage.setItem('yc_ai_favorites', JSON.stringify(Array.from(favorites)));
+      } catch(e) {}
+      updateFavCountDisplay();
+      renderTools();
+    }
+
+    function updateFavCountDisplay() {
+      tabCountFav.textContent = favorites.size;
+    }
+
+    // Copy to clipboard
+    function copyUrl(url) {
+      navigator.clipboard.writeText(url).then(() => {
+        showToast('已複製連結至剪貼簿 📋');
+      }).catch(() => {
+        const input = document.createElement('input');
+        input.value = url;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+        showToast('已複製連結至剪貼簿 📋');
+      });
+    }
+
+    // Category styling
+    function getCategoryBadgeClass(category) {
+      if (category.includes('一、')) return 'badge-cat1';
+      if (category.includes('二、')) return 'badge-cat2';
+      if (category.includes('三、')) return 'badge-cat3';
+      if (category.includes('四、')) return 'badge-cat4';
+      if (category.includes('五、')) return 'badge-cat5';
+      if (category.includes('六、') || category.includes('自製網站')) return 'badge-cat6';
+      return 'badge-cat1';
+    }
+
+    function getCategoryShortName(category) {
+      if (category.includes('一、')) return '🛠️ 一、綜合平台';
+      if (category.includes('二、')) return '📚 二、學科特教';
+      if (category.includes('三、')) return '📝 三、測驗班管';
+      if (category.includes('四、')) return '🎨 四、創意遊戲';
+      if (category.includes('五、')) return '📂 五、行政評語';
+      if (category.includes('自製網站')) return '🌐 自製網站';
+      return category;
+    }
+
+    // Security: HTML Escaping for zero-XSS DOM safety
+    function escapeHtml(str) {
+      if (str === null || str === undefined) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // Highlight text with safe escaping
+    function highlightText(text, keyword) {
+      if (!text) return '';
+      const safeText = escapeHtml(text);
+      if (!keyword) return safeText;
+      const cleanKeyword = keyword.trim();
+      if (!cleanKeyword) return safeText;
+      const safeKeyword = escapeHtml(cleanKeyword);
+      const index = safeText.toLowerCase().indexOf(safeKeyword.toLowerCase());
+      if (index === -1) return safeText;
+      const match = safeText.substr(index, safeKeyword.length);
+      return safeText.substring(0, index) + '<mark class="highlight">' + match + '</mark>' + safeText.substring(index + safeKeyword.length);
+    }
+
+    // STRICT FILTER LOGIC
+    function getFilteredTools() {
+      const q = currentFilter.search.trim().toLowerCase();
+      const cat = currentFilter.category;
+      const tag = currentFilter.tag;
+      const favOnly = currentFilter.favoritesOnly;
+
+      return TOOLS_DATA.filter(item => {
+        // 1. Favorites filter
+        if (favOnly && !favorites.has(item.id)) return false;
+
+        // 2. Strict Category Filter
+        if (cat !== 'all' && cat !== 'favorite') {
+          if (cat === '自製網站') {
+            if (!item.category.includes('自製網站')) return false;
+          } else if (cat.startsWith('🛠️ 一、')) {
+            if (!item.category.includes('一、')) return false;
+          } else if (cat.startsWith('📚 二、')) {
+            if (!item.category.includes('二、')) return false;
+          } else if (cat.startsWith('📝 三、')) {
+            if (!item.category.includes('三、')) return false;
+          } else if (cat.startsWith('🎨 四、')) {
+            if (!item.category.includes('四、')) return false;
+          } else if (cat.startsWith('📂 五、')) {
+            if (!item.category.includes('五、')) return false;
+          } else {
+            if (item.category !== cat) return false;
+          }
+        }
+
+        // 3. Quick Tag Filter (Matches anywhere across tool text)
+        if (tag) {
+          const keywords = QUICK_FILTER_KEYWORDS[tag] || [tag.toLowerCase()];
+          const fullText = (item.name + ' ' + (item.desc || '') + ' ' + (item.tags || []).join(' ') + ' ' + item.category).toLowerCase();
+          const hasKeyword = keywords.some(k => fullText.includes(k.toLowerCase()));
+          if (!hasKeyword) return false;
+        }
+
+        // 4. Search input
+        if (q) {
+          const inName = item.name.toLowerCase().includes(q);
+          const inDesc = item.desc.toLowerCase().includes(q);
+          const inTags = (item.tags || []).some(t => t.toLowerCase().includes(q));
+          const inUrl = (item.primaryUrl || '').toLowerCase().includes(q);
+          if (!inName && !inDesc && !inTags && !inUrl) return false;
+        }
+
+        return true;
+      }).sort((a, b) => {
+        if (currentFilter.sort === 'fav-first') {
+          const aFav = favorites.has(a.id) ? 1 : 0;
+          const bFav = favorites.has(b.id) ? 1 : 0;
+          if (aFav !== bFav) return bFav - aFav;
+        }
+        if (currentFilter.sort === 'name-asc') {
+          return a.name.localeCompare(b.name, 'zh-TW');
+        }
+        return 0;
+      });
+    }
+
+    // Render Tools
+    function renderTools() {
+      const filtered = getFilteredTools();
+      const q = currentFilter.search.trim();
+
+      visibleCount.textContent = filtered.length;
+      totalCountSpan.textContent = TOOLS_DATA.length;
+
+      // Filter description text
+      let filterDesc = '';
+      if (currentFilter.category !== 'all') {
+        filterDesc += '【' + getCategoryShortName(currentFilter.category) + '】';
+      }
+      if (currentFilter.tag) {
+        filterDesc += ' 快篩: ' + currentFilter.tag;
+      }
+      activeFilterDesc.textContent = filterDesc;
+
+      const hasActiveFilters = currentFilter.search || currentFilter.category !== 'all' || currentFilter.tag || currentFilter.favoritesOnly;
+      btnResetAllFilters.style.display = hasActiveFilters ? 'inline-block' : 'none';
+
+      if (filtered.length === 0) {
+        toolsContainer.innerHTML = '';
+        emptyState.style.display = 'block';
+        return;
+      }
+      emptyState.style.display = 'none';
+
+      if (currentFilter.viewMode === 'list') {
+        renderListView(filtered, q);
+      } else {
+        renderGridView(filtered, q);
+      }
+    }
+
+    // Grid View
+    function renderGridView(items, query) {
+      toolsContainer.className = 'tools-grid';
+      toolsContainer.innerHTML = items.map(item => {
+        const isFav = favorites.has(item.id);
+        const nameHighlighted = highlightText(item.name, query);
+        const descHighlighted = highlightText(item.desc || '暫無詳細說明', query);
+        const catBadgeClass = getCategoryBadgeClass(item.category);
+        const catName = getCategoryShortName(item.category);
+
+        const tagsHtml = (item.tags || []).slice(0, 4).map(t => 
+          '<span class="card-tag">' + highlightText(t, query) + '</span>'
+        ).join('');
+
+        let extraLinksHtml = '';
+        if (item.links && item.links.length > 1) {
+          extraLinksHtml = '<div class="links-badge-group">' + 
+            item.links.slice(1).map(l => 
+              '<a href="' + escapeHtml(l.url) + '" target="_blank" rel="noopener noreferrer" class="extra-link-pill" title="' + escapeHtml(l.url) + '">🔗 ' + escapeHtml(l.label) + '</a>'
+            ).join('') + 
+          '</div>';
+        }
+
+        const safePrimaryUrl = escapeHtml(item.primaryUrl);
+        const safeId = escapeHtml(item.id);
+
+        return '<article class="tool-card ' + (isFav ? 'is-favorite' : '') + '" data-id="' + safeId + '">' +
+          '<div>' +
+            '<div class="tool-card-header">' +
+              '<span class="cat-badge ' + catBadgeClass + '">' + catName + '</span>' +
+              '<button class="btn-fav ' + (isFav ? 'active' : '') + '" data-fav-id="' + safeId + '" title="' + (isFav ? '取消收藏' : '加入收藏') + '">' +
+                (isFav ? '★' : '☆') +
+              '</button>' +
+            '</div>' +
+            '<h2 class="tool-title">' + nameHighlighted + '</h2>' +
+            '<p class="tool-desc">' + descHighlighted + '</p>' +
+            '<div class="tool-tags-list">' + tagsHtml + '</div>' +
+            extraLinksHtml +
+          '</div>' +
+          '<div class="tool-footer">' +
+            '<a href="' + safePrimaryUrl + '" target="_blank" rel="noopener noreferrer" class="btn-launch">開啟工具 ↗</a>' +
+            '<button class="btn-copy-link" data-copy-url="' + safePrimaryUrl + '" title="複製連結網址">📋 複製</button>' +
+          '</div>' +
+        '</article>';
+      }).join('');
+    }
+
+    // List View
+    function renderListView(items, query) {
+      toolsContainer.className = 'tools-list-view';
+      toolsContainer.innerHTML = items.map(item => {
+        const isFav = favorites.has(item.id);
+        const nameHighlighted = highlightText(item.name, query);
+        const descHighlighted = highlightText(item.desc || '暫無詳細說明', query);
+        const catBadgeClass = getCategoryBadgeClass(item.category);
+        const catName = getCategoryShortName(item.category);
+        const safePrimaryUrl = escapeHtml(item.primaryUrl);
+        const safeId = escapeHtml(item.id);
+
+        return '<article class="tool-list-row ' + (isFav ? 'is-favorite' : '') + '" data-id="' + safeId + '">' +
+          '<div class="list-info-main">' +
+            '<div class="list-title-row">' +
+              '<button class="btn-fav ' + (isFav ? 'active' : '') + '" data-fav-id="' + safeId + '" style="font-size: 1.1rem;">' +
+                (isFav ? '★' : '☆') +
+              '</button>' +
+              '<span class="cat-badge ' + catBadgeClass + '" style="font-size: 0.72rem; padding: 2px 8px;">' + catName + '</span>' +
+              '<h3 class="list-title">' + nameHighlighted + '</h3>' +
+            '</div>' +
+            '<p class="list-desc">' + descHighlighted + '</p>' +
+          '</div>' +
+          '<div class="list-actions">' +
+            '<button class="btn-copy-link" data-copy-url="' + safePrimaryUrl + '" style="padding: 7px 12px; font-size: 0.82rem;">📋 複製</button>' +
+            '<a href="' + safePrimaryUrl + '" target="_blank" rel="noopener noreferrer" class="btn-launch" style="padding: 7px 14px; font-size: 0.82rem;">開啟 ↗</a>' +
+          '</div>' +
+        '</article>';
+      }).join('');
+    }
+
+    // Event Delegation
+    toolsContainer.addEventListener('click', (e) => {
+      const favBtn = e.target.closest('[data-fav-id]');
+      if (favBtn) {
+        toggleFavorite(favBtn.getAttribute('data-fav-id'));
+        return;
+      }
+      const copyBtn = e.target.closest('[data-copy-url]');
+      if (copyBtn) {
+        copyUrl(copyBtn.getAttribute('data-copy-url'));
+        return;
+      }
+    });
+
+    // Search Input
+    searchInput.addEventListener('input', (e) => {
+      currentFilter.search = e.target.value;
+      clearSearchBtn.style.display = currentFilter.search ? 'block' : 'none';
+      renderTools();
+    });
+
+    clearSearchBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      currentFilter.search = '';
+      clearSearchBtn.style.display = 'none';
+      renderTools();
+    });
+
+    // Category Tabs Click (Strict Filter)
+    categoryTabs.addEventListener('click', (e) => {
+      const tab = e.target.closest('.tab-pill');
+      if (!tab) return;
+
+      const cat = tab.getAttribute('data-cat');
+      categoryTabs.querySelectorAll('.tab-pill').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      // Clear tag filter when manually changing category to keep it strict
+      currentFilter.tag = '';
+      tagFiltersRow.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
+
+      if (cat === 'favorite') {
+        currentFilter.favoritesOnly = true;
+        currentFilter.category = 'all';
+      } else {
+        currentFilter.favoritesOnly = false;
+        currentFilter.category = cat;
+      }
+      renderTools();
+    });
+
+    // Tab Navigation Scroll Buttons
+    const btnTabScrollLeft = document.getElementById('btnTabScrollLeft');
+    const btnTabScrollRight = document.getElementById('btnTabScrollRight');
+    if (btnTabScrollLeft && btnTabScrollRight) {
+      btnTabScrollLeft.addEventListener('click', () => {
+        categoryTabs.scrollBy({ left: -260, behavior: 'smooth' });
+      });
+      btnTabScrollRight.addEventListener('click', () => {
+        categoryTabs.scrollBy({ left: 260, behavior: 'smooth' });
+      });
+    }
+
+    // Quick Tag Filters Click (Smart All-category search)
+    tagFiltersRow.addEventListener('click', (e) => {
+      const btn = e.target.closest('.filter-tag');
+      if (!btn) return;
+
+      const tag = btn.getAttribute('data-tag');
+      if (currentFilter.tag === tag) {
+        // Deselect
+        currentFilter.tag = '';
+        btn.classList.remove('active');
+      } else {
+        tagFiltersRow.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter.tag = tag;
+
+        // Auto-switch to ALL tools so quick filter always finds plenty of tools!
+        currentFilter.category = 'all';
+        currentFilter.favoritesOnly = false;
+        categoryTabs.querySelectorAll('.tab-pill').forEach(t => t.classList.remove('active'));
+        categoryTabs.querySelector('[data-cat="all"]').classList.add('active');
+      }
+      renderTools();
+    });
+
+    // Stats Grid Card Click (Shortcut to Strict Category)
+    document.getElementById('statsGrid').addEventListener('click', (e) => {
+      const card = e.target.closest('.stat-card');
+      if (!card) return;
+      const cat = card.getAttribute('data-cat');
+      
+      categoryTabs.querySelectorAll('.tab-pill').forEach(tab => {
+        if (tab.getAttribute('data-cat') === cat) {
+          tab.classList.add('active');
+        } else {
+          tab.classList.remove('active');
+        }
+      });
+
+      currentFilter.tag = '';
+      tagFiltersRow.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
+      currentFilter.favoritesOnly = false;
+      currentFilter.category = cat;
+      renderTools();
+      window.scrollTo({ top: 380, behavior: 'smooth' });
+    });
+
+    // Sort
+    sortSelect.addEventListener('change', (e) => {
+      currentFilter.sort = e.target.value;
+      renderTools();
+    });
+
+    // Views
+    btnGridView.addEventListener('click', () => {
+      btnGridView.classList.add('active');
+      btnListView.classList.remove('active');
+      currentFilter.viewMode = 'grid';
+      renderTools();
+    });
+
+    btnListView.addEventListener('click', () => {
+      btnListView.classList.add('active');
+      btnGridView.classList.remove('active');
+      currentFilter.viewMode = 'list';
+      renderTools();
+    });
+
+    // Reset All Filters
+    btnResetAllFilters.addEventListener('click', () => {
+      currentFilter.search = '';
+      currentFilter.category = 'all';
+      currentFilter.tag = '';
+      currentFilter.favoritesOnly = false;
+      searchInput.value = '';
+      clearSearchBtn.style.display = 'none';
+      categoryTabs.querySelectorAll('.tab-pill').forEach(t => t.classList.remove('active'));
+      categoryTabs.querySelector('[data-cat="all"]').classList.add('active');
+      tagFiltersRow.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
+      renderTools();
+    });
+
+    // Export JSON
+    document.getElementById('btnExportJson').addEventListener('click', () => {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(TOOLS_DATA, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", "AI教育與教學工具全彙整_祐誠老師.json");
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+      showToast('已匯出 JSON 檔案 📦');
+    });
+
+    // Export CSV
+    document.getElementById('btnExportCsv').addEventListener('click', () => {
+      const header = ['名稱', '主題分類', '使用說明', '主要連結', '標籤'];
+      const rows = TOOLS_DATA.map(t => [
+        '"' + (t.name || '').replace(/"/g, '""') + '"',
+        '"' + (t.category || '').replace(/"/g, '""') + '"',
+        '"' + (t.desc || '').replace(/"/g, '""') + '"',
+        '"' + (t.primaryUrl || '').replace(/"/g, '""') + '"',
+        '"' + (t.tags || []).join(';') + '"'
+      ]);
+      const csvContent = "\\uFEFF" + [header.join(','), ...rows.map(r => r.join(','))].join('\\n');
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.setAttribute('href', url);
+      link.setAttribute('download', 'AI教育與教學工具全彙整_祐誠老師.csv');
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      showToast('已匯出 CSV 檔案 📑');
+    });
+
+    // Init
+    updateFavCountDisplay();
+    renderTools();
+  </script>
+</body>
+</html>
