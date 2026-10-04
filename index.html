@@ -63,6 +63,29 @@
       --primary-light: var(--c-cloud-blue-soft);
 
       --accent-star: #C29B68;
+
+      /* 控制元件背景色 (淺色模式) */
+      --ctrl-bg: rgba(255, 255, 255, 0.88);
+      --ctrl-bg-hover: #ffffff;
+      --ctrl-border: rgba(217, 201, 177, 0.7);
+      --ctrl-text: var(--c-rock-dark);
+      --ctrl-subtext: var(--c-rock-sub);
+      --tag-bg: rgba(255, 255, 255, 0.85);
+      --tag-text: var(--c-rock-sub);
+      --tab-inactive-bg: rgba(255, 255, 255, 0.82);
+      --tab-inactive-text: var(--c-rock-sub);
+      --tab-count-bg: var(--c-warm-sand-soft);
+      --tab-count-text: var(--c-rock-dark);
+      --watermark-bg: rgba(255, 255, 255, 0.88);
+      --watermark-text: var(--c-rock-dark);
+      --stat-card-active-bg: rgba(255, 255, 255, 0.96);
+      --modal-bg: rgba(255, 255, 255, 0.95);
+      --toast-bg: rgba(255, 255, 255, 0.96);
+      --toast-text: var(--c-rock-dark);
+      --code-box-bg: rgba(217, 201, 177, 0.22);
+      --btn-primary-bg: #5A829E;
+      --btn-primary-text: #ffffff;
+      --btn-primary-hover: #456E8A;
     }
 
     [data-theme="dark"] {
@@ -76,15 +99,15 @@
       --c-rock-dark: #F5F1EA;
       --c-rock-sub: #D9C9B1;
 
-      --bg-body: #1E1A17;
+      --bg-body: #161311;
       --grid-line: rgba(217, 201, 177, 0.08);
       --grid-size: 44px;
 
-      --glass-bg: rgba(38, 33, 29, 0.76);
-      --glass-bg-hover: rgba(50, 44, 38, 0.92);
+      --glass-bg: rgba(30, 26, 23, 0.82);
+      --glass-bg-hover: rgba(42, 36, 31, 0.94);
       --glass-border: rgba(142, 132, 122, 0.35);
       --glass-border-subtle: rgba(142, 132, 122, 0.25);
-      --glass-shadow: 0 10px 32px -4px rgba(0, 0, 0, 0.45);
+      --glass-shadow: 0 10px 32px -4px rgba(0, 0, 0, 0.5);
       --glass-shadow-hover: 0 18px 42px -6px rgba(144, 175, 197, 0.28);
 
       --bg-surface: var(--glass-bg);
@@ -96,13 +119,36 @@
 
       --text-primary: #F5F1EA;
       --text-secondary: #D9C9B1;
-      --text-muted: #8E847A;
+      --text-muted: #9E948A;
 
       --primary: var(--c-cloud-blue);
       --primary-hover: var(--c-cloud-blue-deep);
       --primary-light: var(--c-cloud-blue-soft);
 
       --accent-star: #E0BA7A;
+
+      /* 控制元件背景色 (深色模式：深岩板毛玻璃，杜絕白底白字對比失調) */
+      --ctrl-bg: rgba(42, 36, 31, 0.88);
+      --ctrl-bg-hover: rgba(54, 46, 40, 0.98);
+      --ctrl-border: rgba(142, 132, 122, 0.45);
+      --ctrl-text: #F5F1EA;
+      --ctrl-subtext: #D9C9B1;
+      --tag-bg: rgba(42, 36, 31, 0.88);
+      --tag-text: #D9C9B1;
+      --tab-inactive-bg: rgba(42, 36, 31, 0.88);
+      --tab-inactive-text: #D9C9B1;
+      --tab-count-bg: rgba(217, 201, 177, 0.2);
+      --tab-count-text: #F5F1EA;
+      --watermark-bg: rgba(32, 27, 24, 0.92);
+      --watermark-text: #F5F1EA;
+      --stat-card-active-bg: rgba(54, 46, 40, 0.96);
+      --modal-bg: rgba(34, 29, 25, 0.96);
+      --toast-bg: rgba(34, 29, 25, 0.96);
+      --toast-text: #F5F1EA;
+      --code-box-bg: rgba(24, 20, 18, 0.75);
+      --btn-primary-bg: #90AFC5;
+      --btn-primary-text: #1E1A17;
+      --btn-primary-hover: #ADC4D4;
     }
 
     /* Reset & Base: 44像素方格紙鋪滿不留外框 */
@@ -198,9 +244,9 @@
       width: 42px;
       height: 42px;
       border-radius: var(--radius-md);
-      border: 1px solid var(--border-subtle);
-      background: rgba(255, 255, 255, 0.8);
-      color: var(--text-primary);
+      border: 1px solid var(--ctrl-border);
+      background: var(--ctrl-bg);
+      color: var(--ctrl-text);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -211,7 +257,8 @@
 
     .btn-icon:hover {
       border-color: var(--primary);
-      background: var(--primary-light);
+      background: var(--ctrl-bg-hover);
+      color: var(--primary);
       transform: translateY(-2px);
     }
 
@@ -220,9 +267,9 @@
       font-size: 0.88rem;
       font-weight: 600;
       border-radius: var(--radius-md);
-      border: 1px solid var(--border-subtle);
-      background: rgba(255, 255, 255, 0.85);
-      color: var(--text-primary);
+      border: 1px solid var(--ctrl-border);
+      background: var(--ctrl-bg);
+      color: var(--ctrl-text);
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -234,12 +281,12 @@
     .btn-export:hover {
       background: var(--c-cloud-blue-soft);
       border-color: var(--primary);
-      color: var(--c-cloud-blue-deep);
+      color: var(--primary);
       transform: translateY(-2px);
     }
 
     /* ============================================================
-       KPI Stats Grid: 頂部指標按類別排成遞增的階梯色塊 (實心、斜紋、漸變)
+       KPI Stats Grid: 頂部指標以「類別」為唯一核心，搭配遞增色塊飾條
        ============================================================ */
     .stats-grid {
       display: grid;
@@ -270,7 +317,7 @@
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid var(--glass-border);
       border-radius: var(--radius-md);
-      padding: 14px 16px;
+      padding: 14px 14px 12px 14px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -280,10 +327,11 @@
       position: relative;
       overflow: hidden;
       box-shadow: var(--glass-shadow);
+      user-select: none;
     }
 
     .stat-card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-5px);
       background: var(--glass-bg-hover);
       border-color: var(--c-cloud-blue);
       box-shadow: var(--glass-shadow-hover);
@@ -291,30 +339,28 @@
 
     .stat-card.active {
       border-color: var(--c-cloud-blue);
-      background: rgba(255, 255, 255, 0.95);
+      background: var(--stat-card-active-bg);
       box-shadow: 0 0 0 2px var(--c-cloud-blue), var(--glass-shadow-hover);
     }
 
-    /* 頂部階梯色塊條 (Stepped Color Block Bar) - 遞增高度 */
+    /* 頂部階梯色塊飾條 (Stepped Color Accent Bar) - 遞增高度與三種紋理 (實心、斜紋、漸變) */
     .step-color-bar {
       width: 100%;
       border-radius: 4px;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
       transition: all 0.25s ease;
     }
 
-    /* 遞增高度階梯 (Step 1 ~ Step 6 遞增) */
+    /* 遞增高度階梯 (Step 1 ~ Step 6 遞增，由矮到高) */
+    .bar-total  { height: 6px; }
     .bar-step-1 { height: 6px; }
     .bar-step-2 { height: 10px; }
     .bar-step-3 { height: 14px; }
     .bar-step-4 { height: 18px; }
     .bar-step-5 { height: 22px; }
     .bar-step-6 { height: 26px; }
-    .bar-total  { height: 8px; }
 
     /* 三大紋理樣式：實心 (Solid)、斜紋 (Stripes)、漸變 (Gradient) */
-    
-    /* 1. 實心 (Solid) */
     .pattern-solid-blue {
       background-color: var(--c-cloud-blue);
       box-shadow: 0 2px 6px rgba(144, 175, 197, 0.35);
@@ -323,15 +369,13 @@
       background-color: var(--c-warm-sand);
       box-shadow: 0 2px 6px rgba(217, 201, 177, 0.35);
     }
-
-    /* 2. 斜紋 (Diagonal Stripes) */
     .pattern-stripe-sand {
       background: repeating-linear-gradient(
         45deg,
         var(--c-warm-sand),
         var(--c-warm-sand) 6px,
-        var(--c-cream-white) 6px,
-        var(--c-cream-white) 12px
+        rgba(245, 241, 234, 0.8) 6px,
+        rgba(245, 241, 234, 0.8) 12px
       );
       box-shadow: inset 0 0 0 1px rgba(142, 132, 122, 0.2);
     }
@@ -340,13 +384,11 @@
         -45deg,
         var(--c-cloud-blue),
         var(--c-cloud-blue) 6px,
-        rgba(245, 241, 234, 0.95) 6px,
-        rgba(245, 241, 234, 0.95) 12px
+        rgba(245, 241, 234, 0.9) 6px,
+        rgba(245, 241, 234, 0.9) 12px
       );
       box-shadow: inset 0 0 0 1px rgba(111, 149, 175, 0.3);
     }
-
-    /* 3. 漸變 (Gradient) */
     .pattern-grad-blue-sand {
       background: linear-gradient(135deg, var(--c-cloud-blue) 0%, var(--c-warm-sand) 100%);
       box-shadow: 0 2px 8px rgba(144, 175, 197, 0.3);
@@ -357,106 +399,68 @@
     }
     .pattern-grad-total {
       background: linear-gradient(90deg, var(--c-cloud-blue) 0%, var(--c-warm-sand) 50%, var(--c-rock-grey) 100%);
+      box-shadow: 0 2px 8px rgba(144, 175, 197, 0.3);
     }
 
-    /* 階梯指標卡片標頭與標籤 */
-    .stat-header {
+    /* 卡片主體：以類別為唯一焦點 */
+    .stat-main {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 6px;
+      flex-direction: column;
+      gap: 4px;
     }
 
     .stat-cat-title {
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       font-weight: 700;
       color: var(--text-primary);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      line-height: 1.35;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      word-break: break-word;
     }
 
-    .stat-badge {
-      font-size: 0.68rem;
-      padding: 2px 7px;
-      border-radius: var(--radius-full);
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    .badge-pattern-solid {
-      background: var(--c-cloud-blue);
-      color: #ffffff;
-    }
-    .badge-pattern-solid-sand {
-      background: var(--c-warm-sand);
-      color: var(--c-rock-dark);
-    }
-    .badge-pattern-stripe {
-      background: var(--c-warm-sand-soft);
-      border: 1px dashed var(--c-rock-grey);
-      color: var(--c-rock-dark);
-    }
-    .badge-pattern-grad {
-      background: linear-gradient(135deg, var(--c-cloud-blue-soft), var(--c-warm-sand-soft));
-      border: 1px solid var(--c-cloud-blue);
-      color: var(--c-rock-dark);
-    }
-    .badge-total {
-      background: rgba(142, 132, 122, 0.12);
-      border: 1px solid var(--c-rock-grey);
-      color: var(--c-rock-dark);
+    .stat-count-row {
+      display: flex;
+      align-items: baseline;
+      gap: 5px;
+      margin-top: 2px;
     }
 
     .stat-value {
       font-size: 1.95rem;
       font-weight: 800;
       font-family: var(--font-mono);
-      line-height: 1.1;
+      line-height: 1;
       color: var(--text-primary);
-      margin-top: 2px;
     }
 
-    /* 階梯指示底部進度 (Mini Step Meter ▂▃▅▆▇) */
-    .stat-step-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 4px;
-      padding-top: 6px;
-      border-top: 1px solid rgba(217, 201, 177, 0.35);
-      font-size: 0.72rem;
+    .stat-unit {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .stat-footer-label {
+      font-size: 0.74rem;
       color: var(--text-muted);
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 6px;
+      margin-top: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: color 0.2s ease;
+    }
+
+    .stat-card:hover .stat-footer-label {
+      color: var(--primary);
+    }
+
+    .stat-card.active .stat-footer-label {
+      color: var(--primary);
       font-weight: 600;
     }
-
-    .mini-step-meter {
-      display: flex;
-      align-items: flex-end;
-      gap: 3px;
-      height: 14px;
-    }
-
-    .step-unit {
-      width: 4px;
-      border-radius: 1px;
-      background: rgba(142, 132, 122, 0.2);
-    }
-    .step-unit:nth-child(1) { height: 4px; }
-    .step-unit:nth-child(2) { height: 6px; }
-    .step-unit:nth-child(3) { height: 8px; }
-    .step-unit:nth-child(4) { height: 10px; }
-    .step-unit:nth-child(5) { height: 12px; }
-    .step-unit:nth-child(6) { height: 14px; }
-
-    .meter-step-1 .step-unit:nth-child(1) { background: var(--c-cloud-blue); }
-    .meter-step-2 .step-unit:nth-child(-n+2) { background: var(--c-warm-sand); }
-    .meter-step-3 .step-unit:nth-child(-n+3) { background: var(--c-cloud-blue); }
-    .meter-step-4 .step-unit:nth-child(-n+4) { background: var(--c-warm-sand); }
-    .meter-step-5 .step-unit:nth-child(-n+5) { background: var(--c-cloud-blue); }
-    .meter-step-6 .step-unit:nth-child(-n+6) { background: var(--c-rock-grey); }
 
     /* Control Panel: 半透明白玻璃搜尋控制面板 */
     .control-panel {
@@ -498,18 +502,22 @@
       padding: 14px 44px 14px 48px;
       font-size: 1rem;
       font-family: var(--font-sans);
-      background: rgba(255, 255, 255, 0.85);
-      border: 1px solid var(--border-subtle);
+      background: var(--ctrl-bg);
+      border: 1px solid var(--ctrl-border);
       border-radius: var(--radius-md);
-      color: var(--text-primary);
+      color: var(--ctrl-text);
       transition: var(--transition);
       outline: none;
+    }
+
+    .search-input::placeholder {
+      color: var(--text-muted);
     }
 
     .search-input:focus {
       border-color: var(--primary);
       box-shadow: 0 0 0 3px var(--primary-light);
-      background: #ffffff;
+      background: var(--ctrl-bg-hover);
     }
 
     .clear-search-btn {
@@ -526,6 +534,10 @@
       display: none;
     }
 
+    .clear-search-btn:hover {
+      color: var(--ctrl-text);
+    }
+
     .view-actions {
       display: flex;
       align-items: center;
@@ -534,10 +546,10 @@
 
     .select-dropdown {
       padding: 12px 18px;
-      background: rgba(255, 255, 255, 0.85);
-      border: 1px solid var(--border-subtle);
+      background: var(--ctrl-bg);
+      border: 1px solid var(--ctrl-border);
       border-radius: var(--radius-md);
-      color: var(--text-primary);
+      color: var(--ctrl-text);
       font-family: var(--font-sans);
       font-size: 0.92rem;
       font-weight: 600;
@@ -546,16 +558,22 @@
       transition: var(--transition);
     }
 
+    .select-dropdown option {
+      background: var(--bg-body);
+      color: var(--text-primary);
+    }
+
     .select-dropdown:hover {
       border-color: var(--primary);
+      background: var(--ctrl-bg-hover);
     }
 
     .view-toggle-btn {
       padding: 10px 14px;
-      background: rgba(255, 255, 255, 0.85);
-      border: 1px solid var(--border-subtle);
+      background: var(--ctrl-bg);
+      border: 1px solid var(--ctrl-border);
       border-radius: var(--radius-md);
-      color: var(--text-secondary);
+      color: var(--ctrl-subtext);
       cursor: pointer;
       font-size: 1rem;
       transition: var(--transition);
@@ -564,13 +582,15 @@
     .view-toggle-btn:hover {
       border-color: var(--primary);
       color: var(--primary);
+      background: var(--ctrl-bg-hover);
     }
 
     .view-toggle-btn.active {
-      background: var(--c-cloud-blue);
-      border-color: var(--c-cloud-blue);
-      color: #ffffff;
+      background: var(--btn-primary-bg);
+      border-color: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
       box-shadow: 0 2px 8px rgba(144, 175, 197, 0.35);
+      font-weight: 700;
     }
 
     /* Category Tabs with Navigation Arrows */
@@ -603,9 +623,9 @@
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-primary);
+      background: var(--ctrl-bg);
+      border: 1px solid var(--ctrl-border);
+      color: var(--ctrl-text);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -622,7 +642,7 @@
     .tab-scroll-btn:hover {
       background: var(--primary);
       border-color: var(--primary);
-      color: #ffffff;
+      color: var(--btn-primary-text);
       transform: scale(1.08);
     }
 
@@ -632,9 +652,9 @@
       font-size: 0.88rem;
       font-weight: 600;
       border-radius: var(--radius-full);
-      background: rgba(255, 255, 255, 0.8);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-secondary);
+      background: var(--tab-inactive-bg);
+      border: 1px solid var(--ctrl-border);
+      color: var(--tab-inactive-text);
       cursor: pointer;
       transition: var(--transition);
       display: flex;
@@ -644,36 +664,38 @@
 
     .tab-pill:hover {
       border-color: var(--c-cloud-blue);
-      color: var(--c-cloud-blue-deep);
-      background: rgba(255, 255, 255, 0.98);
+      color: var(--primary);
+      background: var(--ctrl-bg-hover);
       transform: translateY(-2px);
     }
 
     .tab-pill.active {
-      background: var(--c-cloud-blue);
-      color: #ffffff;
-      border-color: var(--c-cloud-blue);
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      border-color: var(--btn-primary-bg);
+      font-weight: 700;
       box-shadow: 0 4px 12px rgba(144, 175, 197, 0.35);
     }
 
     .tab-pill.tab-selfmade.active {
-      background: var(--c-cloud-blue-deep);
-      color: #ffffff;
-      border-color: var(--c-cloud-blue-deep);
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      border-color: var(--btn-primary-bg);
+      font-weight: 700;
     }
 
     .tab-count {
       font-size: 0.75rem;
       padding: 2px 7px;
       border-radius: var(--radius-full);
-      background: rgba(255, 255, 255, 0.25);
+      background: rgba(0, 0, 0, 0.12);
       font-family: var(--font-mono);
       font-weight: 700;
     }
 
     .tab-pill:not(.active) .tab-count {
-      background: var(--c-warm-sand-soft);
-      color: var(--text-secondary);
+      background: var(--tab-count-bg);
+      color: var(--tab-count-text);
     }
 
     /* Tag Filters (熱門快篩) */
@@ -699,25 +721,25 @@
       font-size: 0.8rem;
       padding: 5px 14px;
       border-radius: var(--radius-full);
-      background: rgba(255, 255, 255, 0.8);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-secondary);
+      background: var(--tag-bg);
+      border: 1px solid var(--ctrl-border);
+      color: var(--tag-text);
       cursor: pointer;
       transition: var(--transition);
     }
 
     .filter-tag:hover {
       border-color: var(--primary);
-      color: var(--c-cloud-blue-deep);
-      background: #ffffff;
+      color: var(--primary);
+      background: var(--ctrl-bg-hover);
       transform: translateY(-1px);
     }
 
     .filter-tag.active {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: #ffffff;
-      font-weight: 600;
+      background: var(--btn-primary-bg);
+      border-color: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      font-weight: 700;
       box-shadow: 0 2px 8px rgba(144, 175, 197, 0.35);
     }
 
@@ -733,14 +755,14 @@
     }
 
     .results-count b {
-      color: var(--c-cloud-blue-deep);
+      color: var(--primary);
       font-family: var(--font-mono);
       font-size: 1.15rem;
     }
 
     .btn-reset-filters {
       font-size: 0.82rem;
-      color: var(--c-rock-dark);
+      color: var(--ctrl-text);
       background: var(--c-warm-sand-soft);
       border: 1px solid var(--c-warm-sand);
       padding: 4px 12px;
@@ -811,37 +833,37 @@
       letter-spacing: 0.02em;
     }
 
-    /* cat6: 自製網站 (Step 1 · 實心 雲霧藍) */
+    /* cat6: 自製網站 (實心 雲霧藍) */
     .badge-cat6 {
       background: var(--c-cloud-blue);
-      color: #ffffff;
+      color: #1E1A17;
       border: 1px solid var(--c-cloud-blue-deep);
     }
-    /* cat1: 綜合平台 (Step 2 · 斜紋 暖沙米) */
+    /* cat1: 綜合平台 (斜紋 暖沙米) */
     .badge-cat1 {
-      background: repeating-linear-gradient(45deg, var(--c-warm-sand), var(--c-warm-sand) 5px, var(--c-cream-white) 5px, var(--c-cream-white) 10px);
-      color: var(--c-rock-dark);
+      background: repeating-linear-gradient(45deg, var(--c-warm-sand), var(--c-warm-sand) 5px, rgba(245, 241, 234, 0.75) 5px, rgba(245, 241, 234, 0.75) 10px);
+      color: #1E1A17;
       border: 1px solid var(--c-warm-sand);
     }
-    /* cat4: 創意遊戲 (Step 3 · 漸變 雲霧藍 ↔ 暖沙米) */
+    /* cat4: 創意遊戲 (漸變 雲霧藍 ↔ 暖沙米) */
     .badge-cat4 {
-      background: linear-gradient(135deg, rgba(144, 175, 197, 0.5) 0%, rgba(217, 201, 177, 0.6) 100%);
-      color: var(--c-rock-dark);
+      background: linear-gradient(135deg, rgba(144, 175, 197, 0.6) 0%, rgba(217, 201, 177, 0.7) 100%);
+      color: #1E1A17;
       border: 1px solid var(--c-cloud-blue);
     }
-    /* cat3: 測驗班管 (Step 4 · 實心 暖沙米) */
+    /* cat3: 測驗班管 (實心 暖沙米) */
     .badge-cat3 {
       background: var(--c-warm-sand);
-      color: var(--c-rock-dark);
-      border: 1px solid rgba(142, 132, 122, 0.35);
+      color: #1E1A17;
+      border: 1px solid rgba(142, 132, 122, 0.4);
     }
-    /* cat2: 學科特教 (Step 5 · 斜紋 雲霧藍) */
+    /* cat2: 學科特教 (斜紋 雲霧藍) */
     .badge-cat2 {
-      background: repeating-linear-gradient(-45deg, rgba(144, 175, 197, 0.45), rgba(144, 175, 197, 0.45) 5px, rgba(245, 241, 234, 0.85) 5px, rgba(245, 241, 234, 0.85) 10px);
-      color: var(--c-rock-dark);
+      background: repeating-linear-gradient(-45deg, rgba(144, 175, 197, 0.55), rgba(144, 175, 197, 0.55) 5px, rgba(245, 241, 234, 0.85) 5px, rgba(245, 241, 234, 0.85) 10px);
+      color: #1E1A17;
       border: 1px solid var(--c-cloud-blue);
     }
-    /* cat5: 行政評語 (Step 6 · 漸變 岩灰 ↔ 雲霧藍) */
+    /* cat5: 行政評語 (漸變 岩灰 ↔ 雲霧藍) */
     .badge-cat5 {
       background: linear-gradient(135deg, var(--c-rock-grey) 0%, var(--c-cloud-blue) 100%);
       color: #ffffff;
@@ -899,9 +921,9 @@
       font-size: 0.75rem;
       padding: 3px 9px;
       border-radius: 6px;
-      background: rgba(255, 255, 255, 0.85);
-      color: var(--text-secondary);
-      border: 1px solid var(--border-subtle);
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border: 1px solid var(--ctrl-border);
       font-weight: 500;
     }
 
@@ -917,11 +939,11 @@
     .btn-launch {
       flex: 1;
       padding: 10px 16px;
-      background: var(--c-cloud-blue);
-      color: #ffffff;
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
       border: none;
       border-radius: var(--radius-md);
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.88rem;
       cursor: pointer;
       display: inline-flex;
@@ -934,17 +956,17 @@
     }
 
     .btn-launch:hover {
-      background: var(--c-cloud-blue-deep);
+      background: var(--btn-primary-hover);
       box-shadow: 0 4px 14px rgba(144, 175, 197, 0.5);
       transform: translateY(-1px);
     }
 
     .btn-copy-link {
       padding: 10px 14px;
-      background: rgba(255, 255, 255, 0.8);
-      border: 1px solid var(--border-subtle);
+      background: var(--ctrl-bg);
+      border: 1px solid var(--ctrl-border);
       border-radius: var(--radius-md);
-      color: var(--text-secondary);
+      color: var(--ctrl-subtext);
       cursor: pointer;
       font-size: 0.88rem;
       transition: var(--transition);
@@ -955,8 +977,8 @@
 
     .btn-copy-link:hover {
       border-color: var(--primary);
-      color: var(--c-cloud-blue-deep);
-      background: #ffffff;
+      color: var(--primary);
+      background: var(--ctrl-bg-hover);
       transform: translateY(-1px);
     }
 
@@ -971,9 +993,9 @@
       font-size: 0.75rem;
       padding: 3px 8px;
       border-radius: var(--radius-sm);
-      background: rgba(255, 255, 255, 0.8);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-secondary);
+      background: var(--ctrl-bg);
+      border: 1px solid var(--ctrl-border);
+      color: var(--ctrl-subtext);
       text-decoration: none;
       display: inline-flex;
       align-items: center;
@@ -982,8 +1004,8 @@
     }
     .extra-link-pill:hover {
       border-color: var(--primary);
-      color: var(--c-cloud-blue-deep);
-      background: #ffffff;
+      color: var(--primary);
+      background: var(--ctrl-bg-hover);
     }
 
     /* List View: 緊湊清單視圖 (同樣具備半透明白玻璃與浮動效果) */
@@ -1090,12 +1112,12 @@
       align-items: center;
       justify-content: center;
       padding: 9px 24px;
-      background: rgba(255, 255, 255, 0.85);
+      background: var(--watermark-bg);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--ctrl-border);
       border-radius: 9999px;
-      color: var(--text-primary);
+      color: var(--watermark-text);
       font-size: 1.05rem;
       font-weight: 700;
       letter-spacing: 0.04em;
@@ -1104,9 +1126,9 @@
     }
 
     .watermark-pill:hover {
-      background: rgba(255, 255, 255, 0.98);
+      background: var(--ctrl-bg-hover);
       border-color: var(--c-cloud-blue);
-      color: var(--c-cloud-blue-deep);
+      color: var(--primary);
       box-shadow: 0 12px 28px -4px rgba(144, 175, 197, 0.35);
       transform: translateY(-2px);
     }
@@ -1117,9 +1139,9 @@
       bottom: 30px;
       left: 50%;
       transform: translateX(-50%) translateY(100px);
-      background: rgba(255, 255, 255, 0.95);
+      background: var(--toast-bg);
       backdrop-filter: blur(12px);
-      color: var(--text-primary);
+      color: var(--toast-text);
       border: 1px solid var(--border-active);
       padding: 12px 24px;
       border-radius: var(--radius-full);
@@ -1144,7 +1166,7 @@
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(53, 47, 41, 0.45);
+      background: rgba(30, 24, 20, 0.6);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       display: flex;
@@ -1163,16 +1185,17 @@
     }
 
     .modal-card {
-      background: rgba(255, 255, 255, 0.92);
+      background: var(--modal-bg);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.95);
+      border: 1px solid var(--glass-border);
       border-radius: var(--radius-lg);
       max-width: 500px;
       width: 100%;
       padding: 30px;
       position: relative;
-      box-shadow: 0 24px 60px -10px rgba(142, 132, 122, 0.35);
+      box-shadow: 0 24px 60px -10px rgba(0, 0, 0, 0.45);
+      color: var(--text-primary);
     }
 
     .modal-close {
@@ -1184,6 +1207,10 @@
       font-size: 1.3rem;
       color: var(--text-muted);
       cursor: pointer;
+    }
+
+    .modal-close:hover {
+      color: var(--text-primary);
     }
 
     @media (max-width: 768px) {
@@ -1220,145 +1247,117 @@
       </div>
     </header>
 
-    <!-- KPI Stats Summary Cards: 頂部指標按類別排成遞增的階梯色塊 (實心、斜紋、漸變) -->
+    <!-- KPI Stats Summary Cards: 頂部指標卡片（以「類別」為唯一核心，搭配遞增色塊飾條） -->
     <section class="stats-grid" id="statsGrid">
-      <!-- 總覽頂點：全部收錄 -->
-      <div class="stat-card stat-card-total" data-cat="all" title="點擊檢視全部收錄工具">
+      <!-- 總覽：全部收錄 -->
+      <div class="stat-card stat-card-total active" data-cat="all" title="點擊檢視全部收錄工具">
         <div class="step-color-bar bar-total pattern-grad-total"></div>
-        <div class="stat-header">
-          <span class="stat-cat-title">全部收錄工具</span>
-          <span class="stat-badge badge-total">全庫總覽</span>
+        <div class="stat-main">
+          <div class="stat-cat-title">🌟 全部收錄工具</div>
+          <div class="stat-count-row">
+            <span class="stat-value" id="statTotalCount">120</span>
+            <span class="stat-unit">款工具</span>
+          </div>
         </div>
-        <div class="stat-value" id="statTotalCount">120</div>
-        <div class="stat-step-footer">
-          <span>全庫 6 大分類</span>
-          <span>120 款工具</span>
+        <div class="stat-footer-label">
+          <span>全庫總覽</span>
+          <span>點選篩選 ↗</span>
         </div>
       </div>
 
-      <!-- 階梯 01 (3 款) · 實心 雲霧藍 -->
+      <!-- 類別 1: 自製網站 (3 款) · 實心 雲霧藍 -->
       <div class="stat-card card-step-1" data-cat="自製網站" title="點擊篩選：自製網站">
         <div class="step-color-bar bar-step-1 pattern-solid-blue"></div>
-        <div class="stat-header">
-          <span class="stat-cat-title">🌐 自製網站</span>
-          <span class="stat-badge badge-pattern-solid">階梯 01 · 實心</span>
-        </div>
-        <div class="stat-value" id="statCat6Count">3</div>
-        <div class="stat-step-footer">
-          <div class="mini-step-meter meter-step-1">
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
+        <div class="stat-main">
+          <div class="stat-cat-title">🌐 自製網站</div>
+          <div class="stat-count-row">
+            <span class="stat-value" id="statCat6Count">3</span>
+            <span class="stat-unit">款工具</span>
           </div>
-          <span>階梯 1 (3 款)</span>
+        </div>
+        <div class="stat-footer-label">
+          <span>祐誠老師專屬</span>
+          <span>點選篩選 ↗</span>
         </div>
       </div>
 
-      <!-- 階梯 02 (16 款) · 斜紋 暖沙米 -->
-      <div class="stat-card card-step-2" data-cat="🛠️ 一、綜合教學資源地圖與平台" title="點擊篩選：綜合資源平台">
+      <!-- 類別 2: 綜合教學資源 (16 款) · 斜紋 暖沙米 -->
+      <div class="stat-card card-step-2" data-cat="🛠️ 一、綜合教學資源地圖與平台" title="點擊篩選：綜合教學資源">
         <div class="step-color-bar bar-step-2 pattern-stripe-sand"></div>
-        <div class="stat-header">
-          <span class="stat-cat-title">🛠️ 綜合資源平台</span>
-          <span class="stat-badge badge-pattern-stripe">階梯 02 · 斜紋</span>
-        </div>
-        <div class="stat-value" id="statCat1Count">16</div>
-        <div class="stat-step-footer">
-          <div class="mini-step-meter meter-step-2">
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
+        <div class="stat-main">
+          <div class="stat-cat-title">🛠️ 綜合教學資源</div>
+          <div class="stat-count-row">
+            <span class="stat-value" id="statCat1Count">16</span>
+            <span class="stat-unit">款工具</span>
           </div>
-          <span>階梯 2 (16 款)</span>
+        </div>
+        <div class="stat-footer-label">
+          <span>資源地圖與平台</span>
+          <span>點選篩選 ↗</span>
         </div>
       </div>
 
-      <!-- 階梯 03 (22 款) · 漸變 雲霧藍 ↔ 暖沙米 -->
+      <!-- 類別 3: 創意生成與遊戲 (22 款) · 漸變 雲霧藍 ↔ 暖沙米 -->
       <div class="stat-card card-step-3" data-cat="🎨 四、創意生成、提示詞與趣味遊戲" title="點擊篩選：創意生成與遊戲">
         <div class="step-color-bar bar-step-3 pattern-grad-blue-sand"></div>
-        <div class="stat-header">
-          <span class="stat-cat-title">🎨 創意提示遊戲</span>
-          <span class="stat-badge badge-pattern-grad">階梯 03 · 漸變</span>
-        </div>
-        <div class="stat-value" id="statCat4Count">22</div>
-        <div class="stat-step-footer">
-          <div class="mini-step-meter meter-step-3">
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
+        <div class="stat-main">
+          <div class="stat-cat-title">🎨 創意生成與遊戲</div>
+          <div class="stat-count-row">
+            <span class="stat-value" id="statCat4Count">22</span>
+            <span class="stat-unit">款工具</span>
           </div>
-          <span>階梯 3 (22 款)</span>
+        </div>
+        <div class="stat-footer-label">
+          <span>提示詞與趣味遊戲</span>
+          <span>點選篩選 ↗</span>
         </div>
       </div>
 
-      <!-- 階梯 04 (23 款) · 實心 暖沙米 -->
+      <!-- 類別 4: 測驗評量與班管 (23 款) · 實心 暖沙米 -->
       <div class="stat-card card-step-4" data-cat="📝 三、測驗評量、審題與課堂管理" title="點擊篩選：測驗評量與班管">
         <div class="step-color-bar bar-step-4 pattern-solid-sand"></div>
-        <div class="stat-header">
-          <span class="stat-cat-title">📝 評量與班管</span>
-          <span class="stat-badge badge-pattern-solid-sand">階梯 04 · 實心</span>
-        </div>
-        <div class="stat-value" id="statCat3Count">23</div>
-        <div class="stat-step-footer">
-          <div class="mini-step-meter meter-step-4">
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
+        <div class="stat-main">
+          <div class="stat-cat-title">📝 測驗評量與班管</div>
+          <div class="stat-count-row">
+            <span class="stat-value" id="statCat3Count">23</span>
+            <span class="stat-unit">款工具</span>
           </div>
-          <span>階梯 4 (23 款)</span>
+        </div>
+        <div class="stat-footer-label">
+          <span>審題與課堂管理</span>
+          <span>點選篩選 ↗</span>
         </div>
       </div>
 
-      <!-- 階梯 05 (24 款) · 斜紋 雲霧藍 -->
-      <div class="stat-card card-step-5" data-cat="📚 二、學科教材、特教與專業學習資源" title="點擊篩選：學科與特教">
+      <!-- 類別 5: 學科教材與特教 (24 款) · 斜紋 雲霧藍 -->
+      <div class="stat-card card-step-5" data-cat="📚 二、學科教材、特教與專業學習資源" title="點擊篩選：學科教材與特教">
         <div class="step-color-bar bar-step-5 pattern-stripe-blue"></div>
-        <div class="stat-header">
-          <span class="stat-cat-title">📚 學科與特教</span>
-          <span class="stat-badge badge-pattern-stripe">階梯 05 · 斜紋</span>
-        </div>
-        <div class="stat-value" id="statCat2Count">24</div>
-        <div class="stat-step-footer">
-          <div class="mini-step-meter meter-step-5">
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
+        <div class="stat-main">
+          <div class="stat-cat-title">📚 學科教材與特教</div>
+          <div class="stat-count-row">
+            <span class="stat-value" id="statCat2Count">24</span>
+            <span class="stat-unit">款工具</span>
           </div>
-          <span>階梯 5 (24 款)</span>
+        </div>
+        <div class="stat-footer-label">
+          <span>各學科與特教教材</span>
+          <span>點選篩選 ↗</span>
         </div>
       </div>
 
-      <!-- 階梯 06 (32 款) · 漸變 岩灰 ↔ 雲霧藍 -->
+      <!-- 類別 6: 行政評語與工具 (32 款) · 漸變 岩灰 ↔ 雲霧藍 -->
       <div class="stat-card card-step-6" data-cat="📂 五、行政、評語與 NotebookLM 進階工具" title="點擊篩選：行政評語與 NotebookLM">
         <div class="step-color-bar bar-step-6 pattern-grad-grey-blue"></div>
-        <div class="stat-header">
-          <span class="stat-cat-title">📂 行政與評語</span>
-          <span class="stat-badge badge-pattern-grad">階梯 06 · 漸變</span>
-        </div>
-        <div class="stat-value" id="statCat5Count">32</div>
-        <div class="stat-step-footer">
-          <div class="mini-step-meter meter-step-6">
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
-            <span class="step-unit"></span>
+        <div class="stat-main">
+          <div class="stat-cat-title">📂 行政評語與工具</div>
+          <div class="stat-count-row">
+            <span class="stat-value" id="statCat5Count">32</span>
+            <span class="stat-unit">款工具</span>
           </div>
-          <span>階梯 6 (32 款)</span>
+        </div>
+        <div class="stat-footer-label">
+          <span>行政與 NotebookLM</span>
+          <span>點選篩選 ↗</span>
         </div>
       </div>
     </section>
@@ -1666,11 +1665,11 @@
     }
 
     function getCategoryShortName(category) {
-      if (category.includes('一、')) return '🛠️ 一、綜合平台';
-      if (category.includes('二、')) return '📚 二、學科特教';
-      if (category.includes('三、')) return '📝 三、測驗班管';
-      if (category.includes('四、')) return '🎨 四、創意遊戲';
-      if (category.includes('五、')) return '📂 五、行政評語';
+      if (category.includes('一、')) return '🛠️ 一、綜合教學資源';
+      if (category.includes('二、')) return '📚 二、學科與特教教材';
+      if (category.includes('三、')) return '📝 三、測驗評量與班管';
+      if (category.includes('四、')) return '🎨 四、創意生成與遊戲';
+      if (category.includes('五、')) return '📂 五、行政評語與工具';
       if (category.includes('自製網站')) return '🌐 自製網站';
       return category;
     }
