@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-TW" data-theme="dark">
+<html lang="zh-TW" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,69 +12,100 @@
   
   <style>
     /* ============================================================
-       CSS Variables & Themes
+       CSS Variables & Themes (4-Color System: 雲霧藍, 暖沙米, 奶霜白, 岩灰)
        ============================================================ */
-    :root {
+    :root, [data-theme="light"] {
       --font-sans: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
       --radius-sm: 8px;
       --radius-md: 12px;
       --radius-lg: 18px;
       --radius-full: 9999px;
-      --transition: all 0.2s ease;
+      --transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+
+      /* 四大指定專屬調色盤 */
+      --c-cloud-blue: #90AFC5;        /* 雲霧藍 */
+      --c-cloud-blue-deep: #6f95b0;   /* 深雲霧藍 (按鈕懸停與外框強對比) */
+      --c-cloud-blue-soft: rgba(144, 175, 197, 0.18);
+      --c-warm-sand: #D9C9B1;         /* 暖沙米 */
+      --c-warm-sand-soft: rgba(217, 201, 177, 0.32);
+      --c-cream-white: #F5F1EA;       /* 奶霜白 (44px 方格紙底色) */
+      --c-rock-grey: #8E847A;         /* 岩灰 */
+      --c-rock-dark: #352F29;         /* 深岩墨 (內文標題與高可讀性文字) */
+      --c-rock-sub: #564F47;          /* 次岩灰 (內文說明) */
+
+      /* 44 像素方格紙鋪滿底色 (無外框邊線) */
+      --bg-body: var(--c-cream-white);
+      --grid-line: rgba(142, 132, 122, 0.13);
+      --grid-size: 44px;
+
+      /* 半透明白玻璃 (White Frosted Glass) */
+      --glass-bg: rgba(255, 255, 255, 0.75);
+      --glass-bg-hover: rgba(255, 255, 255, 0.92);
+      --glass-border: rgba(255, 255, 255, 0.9);
+      --glass-border-subtle: rgba(217, 201, 177, 0.55);
+      --glass-shadow: 0 10px 30px -4px rgba(142, 132, 122, 0.14), 0 2px 6px -1px rgba(142, 132, 122, 0.08);
+      --glass-shadow-hover: 0 18px 42px -6px rgba(144, 175, 197, 0.35), 0 4px 12px -2px rgba(142, 132, 122, 0.12);
+
+      --bg-surface: var(--glass-bg);
+      --bg-surface-elevated: rgba(255, 255, 255, 0.95);
+      --bg-card: var(--glass-bg);
+      --bg-card-hover: var(--glass-bg-hover);
+      --border-subtle: var(--glass-border-subtle);
+      --border-active: var(--c-cloud-blue);
+
+      --text-primary: var(--c-rock-dark);
+      --text-secondary: var(--c-rock-sub);
+      --text-muted: var(--c-rock-grey);
+
+      --primary: var(--c-cloud-blue);
+      --primary-hover: var(--c-cloud-blue-deep);
+      --primary-light: var(--c-cloud-blue-soft);
+
+      --accent-star: #C29B68;
     }
 
     [data-theme="dark"] {
-      --bg-body: #0b0f19;
-      --bg-surface: #111827;
-      --bg-surface-elevated: #1f2937;
-      --bg-card: #151d2f;
-      --bg-card-hover: #1b253b;
-      --border-subtle: rgba(255, 255, 255, 0.08);
-      --border-active: rgba(16, 185, 129, 0.5);
-      --text-primary: #f9fafb;
-      --text-secondary: #9ca3af;
-      --text-muted: #6b7280;
-      --primary: #10b981;
-      --primary-hover: #059669;
-      --primary-light: rgba(16, 185, 129, 0.15);
-      --accent-cyan: #06b6d4;
-      --accent-blue: #3b82f6;
-      --accent-purple: #8b5cf6;
-      --accent-amber: #f59e0b;
-      --accent-rose: #f43f5e;
-      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
-      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
-      --badge-bg: rgba(255, 255, 255, 0.05);
-      --stat-bg: rgba(17, 24, 39, 0.7);
+      --c-cloud-blue: #90AFC5;
+      --c-cloud-blue-deep: #ADC4D4;
+      --c-cloud-blue-soft: rgba(144, 175, 197, 0.25);
+      --c-warm-sand: #D9C9B1;
+      --c-warm-sand-soft: rgba(217, 201, 177, 0.22);
+      --c-cream-white: #F5F1EA;
+      --c-rock-grey: #8E847A;
+      --c-rock-dark: #F5F1EA;
+      --c-rock-sub: #D9C9B1;
+
+      --bg-body: #1E1A17;
+      --grid-line: rgba(217, 201, 177, 0.08);
+      --grid-size: 44px;
+
+      --glass-bg: rgba(38, 33, 29, 0.76);
+      --glass-bg-hover: rgba(50, 44, 38, 0.92);
+      --glass-border: rgba(142, 132, 122, 0.35);
+      --glass-border-subtle: rgba(142, 132, 122, 0.25);
+      --glass-shadow: 0 10px 32px -4px rgba(0, 0, 0, 0.45);
+      --glass-shadow-hover: 0 18px 42px -6px rgba(144, 175, 197, 0.28);
+
+      --bg-surface: var(--glass-bg);
+      --bg-surface-elevated: rgba(45, 39, 34, 0.95);
+      --bg-card: var(--glass-bg);
+      --bg-card-hover: var(--glass-bg-hover);
+      --border-subtle: var(--glass-border-subtle);
+      --border-active: var(--c-cloud-blue);
+
+      --text-primary: #F5F1EA;
+      --text-secondary: #D9C9B1;
+      --text-muted: #8E847A;
+
+      --primary: var(--c-cloud-blue);
+      --primary-hover: var(--c-cloud-blue-deep);
+      --primary-light: var(--c-cloud-blue-soft);
+
+      --accent-star: #E0BA7A;
     }
 
-    [data-theme="light"] {
-      --bg-body: #f8fafc;
-      --bg-surface: #ffffff;
-      --bg-surface-elevated: #f1f5f9;
-      --bg-card: #ffffff;
-      --bg-card-hover: #f8fafc;
-      --border-subtle: #e2e8f0;
-      --border-active: rgba(16, 185, 129, 0.6);
-      --text-primary: #0f172a;
-      --text-secondary: #475569;
-      --text-muted: #94a3b8;
-      --primary: #059669;
-      --primary-hover: #047857;
-      --primary-light: rgba(16, 185, 129, 0.1);
-      --accent-cyan: #0891b2;
-      --accent-blue: #2563eb;
-      --accent-purple: #7c3aed;
-      --accent-amber: #d97706;
-      --accent-rose: #e11d48;
-      --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.08);
-      --badge-bg: #f1f5f9;
-      --stat-bg: #ffffff;
-    }
-
-    /* Reset & Base */
+    /* Reset & Base: 44像素方格紙鋪滿不留外框 */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -84,6 +115,11 @@
     body {
       font-family: var(--font-sans);
       background-color: var(--bg-body);
+      background-image: 
+        linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+      background-size: var(--grid-size) var(--grid-size);
+      background-position: 0 0;
       color: var(--text-primary);
       min-height: 100vh;
       line-height: 1.6;
@@ -91,50 +127,59 @@
       position: relative;
       overflow-x: hidden;
       padding-bottom: 90px;
+      border: none;
     }
 
     .container {
-      max-width: 1400px;
+      max-width: 1420px;
       margin: 0 auto;
       padding: 0 24px;
       position: relative;
       z-index: 1;
     }
 
-    /* Navbar */
+    /* Navbar: 半透明白玻璃頂部導覽 */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 24px 0;
-      border-bottom: 1px solid var(--border-subtle);
-      margin-bottom: 30px;
+      padding: 20px 24px;
+      margin: 20px 0 28px 0;
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--glass-shadow);
+      transition: var(--transition);
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
     }
 
     .brand-icon {
       width: 48px;
       height: 48px;
-      background: linear-gradient(135deg, #10b981, #06b6d4);
+      background: linear-gradient(135deg, var(--c-cloud-blue) 0%, var(--c-warm-sand) 100%);
       border-radius: var(--radius-md);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 26px;
+      box-shadow: 0 4px 12px rgba(144, 175, 197, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      flex-shrink: 0;
     }
 
     .brand-text h1 {
-      font-size: 1.4rem;
+      font-size: 1.38rem;
       font-weight: 800;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, var(--text-primary) 30%, var(--primary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+      line-height: 1.3;
     }
 
     .brand-text p {
@@ -154,18 +199,20 @@
       height: 42px;
       border-radius: var(--radius-md);
       border: 1px solid var(--border-subtle);
-      background: var(--bg-surface);
+      background: rgba(255, 255, 255, 0.8);
       color: var(--text-primary);
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       transition: var(--transition);
-      font-size: 1.1rem;
+      font-size: 1.15rem;
     }
 
     .btn-icon:hover {
       border-color: var(--primary);
+      background: var(--primary-light);
+      transform: translateY(-2px);
     }
 
     .btn-export {
@@ -174,82 +221,253 @@
       font-weight: 600;
       border-radius: var(--radius-md);
       border: 1px solid var(--border-subtle);
-      background: var(--bg-surface);
+      background: rgba(255, 255, 255, 0.85);
       color: var(--text-primary);
       display: inline-flex;
       align-items: center;
       gap: 8px;
       cursor: pointer;
       transition: var(--transition);
+      box-shadow: 0 2px 6px rgba(142, 132, 122, 0.08);
     }
 
     .btn-export:hover {
-      background: var(--primary-light);
+      background: var(--c-cloud-blue-soft);
       border-color: var(--primary);
-      color: var(--primary);
+      color: var(--c-cloud-blue-deep);
+      transform: translateY(-2px);
     }
 
-    /* KPI Stats Grid */
+    /* ============================================================
+       KPI Stats Grid: 頂部指標按類別排成遞增的階梯色塊 (實心、斜紋、漸變)
+       ============================================================ */
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 16px;
-      margin-bottom: 30px;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    @media (max-width: 1300px) {
+      .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    @media (max-width: 768px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 480px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     .stat-card {
-      background: var(--stat-bg);
-      border: 1px solid var(--border-subtle);
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
       border-radius: var(--radius-md);
-      padding: 16px 20px;
+      padding: 14px 16px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      transition: var(--transition);
+      justify-content: space-between;
+      gap: 8px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--glass-shadow);
     }
 
     .stat-card:hover {
-      border-color: var(--border-active);
-      box-shadow: var(--shadow-sm);
+      transform: translateY(-6px);
+      background: var(--glass-bg-hover);
+      border-color: var(--c-cloud-blue);
+      box-shadow: var(--glass-shadow-hover);
     }
 
     .stat-card.active {
-      border-color: var(--primary);
-      background: var(--primary-light);
+      border-color: var(--c-cloud-blue);
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 0 0 2px var(--c-cloud-blue), var(--glass-shadow-hover);
     }
 
+    /* 頂部階梯色塊條 (Stepped Color Block Bar) - 遞增高度 */
+    .step-color-bar {
+      width: 100%;
+      border-radius: 4px;
+      margin-bottom: 4px;
+      transition: all 0.25s ease;
+    }
+
+    /* 遞增高度階梯 (Step 1 ~ Step 6 遞增) */
+    .bar-step-1 { height: 6px; }
+    .bar-step-2 { height: 10px; }
+    .bar-step-3 { height: 14px; }
+    .bar-step-4 { height: 18px; }
+    .bar-step-5 { height: 22px; }
+    .bar-step-6 { height: 26px; }
+    .bar-total  { height: 8px; }
+
+    /* 三大紋理樣式：實心 (Solid)、斜紋 (Stripes)、漸變 (Gradient) */
+    
+    /* 1. 實心 (Solid) */
+    .pattern-solid-blue {
+      background-color: var(--c-cloud-blue);
+      box-shadow: 0 2px 6px rgba(144, 175, 197, 0.35);
+    }
+    .pattern-solid-sand {
+      background-color: var(--c-warm-sand);
+      box-shadow: 0 2px 6px rgba(217, 201, 177, 0.35);
+    }
+
+    /* 2. 斜紋 (Diagonal Stripes) */
+    .pattern-stripe-sand {
+      background: repeating-linear-gradient(
+        45deg,
+        var(--c-warm-sand),
+        var(--c-warm-sand) 6px,
+        var(--c-cream-white) 6px,
+        var(--c-cream-white) 12px
+      );
+      box-shadow: inset 0 0 0 1px rgba(142, 132, 122, 0.2);
+    }
+    .pattern-stripe-blue {
+      background: repeating-linear-gradient(
+        -45deg,
+        var(--c-cloud-blue),
+        var(--c-cloud-blue) 6px,
+        rgba(245, 241, 234, 0.95) 6px,
+        rgba(245, 241, 234, 0.95) 12px
+      );
+      box-shadow: inset 0 0 0 1px rgba(111, 149, 175, 0.3);
+    }
+
+    /* 3. 漸變 (Gradient) */
+    .pattern-grad-blue-sand {
+      background: linear-gradient(135deg, var(--c-cloud-blue) 0%, var(--c-warm-sand) 100%);
+      box-shadow: 0 2px 8px rgba(144, 175, 197, 0.3);
+    }
+    .pattern-grad-grey-blue {
+      background: linear-gradient(135deg, var(--c-rock-grey) 0%, var(--c-cloud-blue) 100%);
+      box-shadow: 0 2px 8px rgba(142, 132, 122, 0.3);
+    }
+    .pattern-grad-total {
+      background: linear-gradient(90deg, var(--c-cloud-blue) 0%, var(--c-warm-sand) 50%, var(--c-rock-grey) 100%);
+    }
+
+    /* 階梯指標卡片標頭與標籤 */
     .stat-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      color: var(--text-secondary);
+      gap: 6px;
+    }
+
+    .stat-cat-title {
       font-size: 0.85rem;
-      font-weight: 600;
+      font-weight: 700;
+      color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .stat-badge {
+      font-size: 0.68rem;
+      padding: 2px 7px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .badge-pattern-solid {
+      background: var(--c-cloud-blue);
+      color: #ffffff;
+    }
+    .badge-pattern-solid-sand {
+      background: var(--c-warm-sand);
+      color: var(--c-rock-dark);
+    }
+    .badge-pattern-stripe {
+      background: var(--c-warm-sand-soft);
+      border: 1px dashed var(--c-rock-grey);
+      color: var(--c-rock-dark);
+    }
+    .badge-pattern-grad {
+      background: linear-gradient(135deg, var(--c-cloud-blue-soft), var(--c-warm-sand-soft));
+      border: 1px solid var(--c-cloud-blue);
+      color: var(--c-rock-dark);
+    }
+    .badge-total {
+      background: rgba(142, 132, 122, 0.12);
+      border: 1px solid var(--c-rock-grey);
+      color: var(--c-rock-dark);
     }
 
     .stat-value {
-      font-size: 2rem;
+      font-size: 1.95rem;
       font-weight: 800;
       font-family: var(--font-mono);
       line-height: 1.1;
       color: var(--text-primary);
+      margin-top: 2px;
     }
 
-    .stat-badge {
-      font-size: 0.75rem;
-      padding: 2px 8px;
-      border-radius: var(--radius-full);
-      font-weight: 700;
+    /* 階梯指示底部進度 (Mini Step Meter ▂▃▅▆▇) */
+    .stat-step-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 4px;
+      padding-top: 6px;
+      border-top: 1px solid rgba(217, 201, 177, 0.35);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 600;
     }
 
-    /* Control Panel */
+    .mini-step-meter {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 14px;
+    }
+
+    .step-unit {
+      width: 4px;
+      border-radius: 1px;
+      background: rgba(142, 132, 122, 0.2);
+    }
+    .step-unit:nth-child(1) { height: 4px; }
+    .step-unit:nth-child(2) { height: 6px; }
+    .step-unit:nth-child(3) { height: 8px; }
+    .step-unit:nth-child(4) { height: 10px; }
+    .step-unit:nth-child(5) { height: 12px; }
+    .step-unit:nth-child(6) { height: 14px; }
+
+    .meter-step-1 .step-unit:nth-child(1) { background: var(--c-cloud-blue); }
+    .meter-step-2 .step-unit:nth-child(-n+2) { background: var(--c-warm-sand); }
+    .meter-step-3 .step-unit:nth-child(-n+3) { background: var(--c-cloud-blue); }
+    .meter-step-4 .step-unit:nth-child(-n+4) { background: var(--c-warm-sand); }
+    .meter-step-5 .step-unit:nth-child(-n+5) { background: var(--c-cloud-blue); }
+    .meter-step-6 .step-unit:nth-child(-n+6) { background: var(--c-rock-grey); }
+
+    /* Control Panel: 半透明白玻璃搜尋控制面板 */
     .control-panel {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
       border-radius: var(--radius-lg);
       padding: 24px;
       margin-bottom: 28px;
+      box-shadow: var(--glass-shadow);
     }
 
     .search-row {
@@ -280,7 +498,7 @@
       padding: 14px 44px 14px 48px;
       font-size: 1rem;
       font-family: var(--font-sans);
-      background: var(--bg-body);
+      background: rgba(255, 255, 255, 0.85);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
       color: var(--text-primary);
@@ -291,6 +509,7 @@
     .search-input:focus {
       border-color: var(--primary);
       box-shadow: 0 0 0 3px var(--primary-light);
+      background: #ffffff;
     }
 
     .clear-search-btn {
@@ -315,21 +534,25 @@
 
     .select-dropdown {
       padding: 12px 18px;
-      background: var(--bg-body);
+      background: rgba(255, 255, 255, 0.85);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
       color: var(--text-primary);
       font-family: var(--font-sans);
       font-size: 0.92rem;
-      font-weight: 500;
+      font-weight: 600;
       outline: none;
       cursor: pointer;
       transition: var(--transition);
     }
 
+    .select-dropdown:hover {
+      border-color: var(--primary);
+    }
+
     .view-toggle-btn {
       padding: 10px 14px;
-      background: var(--bg-body);
+      background: rgba(255, 255, 255, 0.85);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
       color: var(--text-secondary);
@@ -338,10 +561,16 @@
       transition: var(--transition);
     }
 
-    .view-toggle-btn.active {
-      background: var(--primary-light);
+    .view-toggle-btn:hover {
       border-color: var(--primary);
       color: var(--primary);
+    }
+
+    .view-toggle-btn.active {
+      background: var(--c-cloud-blue);
+      border-color: var(--c-cloud-blue);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(144, 175, 197, 0.35);
     }
 
     /* Category Tabs with Navigation Arrows */
@@ -358,14 +587,14 @@
       gap: 10px;
       overflow-x: auto;
       scroll-behavior: smooth;
-      scrollbar-width: none; /* Firefox: 完全隱藏捲軸 */
-      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none;
+      -ms-overflow-style: none;
       flex: 1;
       padding: 4px 0;
     }
 
     .category-tabs::-webkit-scrollbar {
-      display: none; /* Chrome, Safari, Opera: 完全隱藏捲軸 */
+      display: none;
       width: 0;
       height: 0;
     }
@@ -374,7 +603,7 @@
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      background: var(--bg-surface-elevated);
+      background: rgba(255, 255, 255, 0.9);
       border: 1px solid var(--border-subtle);
       color: var(--text-primary);
       display: flex;
@@ -387,12 +616,14 @@
       flex-shrink: 0;
       transition: var(--transition);
       user-select: none;
+      box-shadow: 0 2px 6px rgba(142, 132, 122, 0.1);
     }
 
     .tab-scroll-btn:hover {
-      background: var(--primary-light);
+      background: var(--primary);
       border-color: var(--primary);
-      color: var(--primary);
+      color: #ffffff;
+      transform: scale(1.08);
     }
 
     .tab-pill {
@@ -401,7 +632,7 @@
       font-size: 0.88rem;
       font-weight: 600;
       border-radius: var(--radius-full);
-      background: var(--bg-body);
+      background: rgba(255, 255, 255, 0.8);
       border: 1px solid var(--border-subtle);
       color: var(--text-secondary);
       cursor: pointer;
@@ -412,36 +643,40 @@
     }
 
     .tab-pill:hover {
-      border-color: var(--text-muted);
-      color: var(--text-primary);
+      border-color: var(--c-cloud-blue);
+      color: var(--c-cloud-blue-deep);
+      background: rgba(255, 255, 255, 0.98);
+      transform: translateY(-2px);
     }
 
     .tab-pill.active {
-      background: var(--primary);
+      background: var(--c-cloud-blue);
       color: #ffffff;
-      border-color: var(--primary);
+      border-color: var(--c-cloud-blue);
+      box-shadow: 0 4px 12px rgba(144, 175, 197, 0.35);
     }
 
     .tab-pill.tab-selfmade.active {
-      background: #2563eb;
+      background: var(--c-cloud-blue-deep);
       color: #ffffff;
-      border-color: #2563eb;
+      border-color: var(--c-cloud-blue-deep);
     }
 
     .tab-count {
       font-size: 0.75rem;
       padding: 2px 7px;
       border-radius: var(--radius-full);
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.25);
       font-family: var(--font-mono);
+      font-weight: 700;
     }
 
     .tab-pill:not(.active) .tab-count {
-      background: var(--badge-bg);
-      color: var(--text-muted);
+      background: var(--c-warm-sand-soft);
+      color: var(--text-secondary);
     }
 
-    /* Tag Filters */
+    /* Tag Filters (熱門快篩) */
     .tag-filters-row {
       display: flex;
       align-items: center;
@@ -464,7 +699,7 @@
       font-size: 0.8rem;
       padding: 5px 14px;
       border-radius: var(--radius-full);
-      background: var(--badge-bg);
+      background: rgba(255, 255, 255, 0.8);
       border: 1px solid var(--border-subtle);
       color: var(--text-secondary);
       cursor: pointer;
@@ -473,7 +708,9 @@
 
     .filter-tag:hover {
       border-color: var(--primary);
-      color: var(--text-primary);
+      color: var(--c-cloud-blue-deep);
+      background: #ffffff;
+      transform: translateY(-1px);
     }
 
     .filter-tag.active {
@@ -481,6 +718,7 @@
       border-color: var(--primary);
       color: #ffffff;
       font-weight: 600;
+      box-shadow: 0 2px 8px rgba(144, 175, 197, 0.35);
     }
 
     /* Results feedback */
@@ -495,27 +733,31 @@
     }
 
     .results-count b {
-      color: var(--primary);
+      color: var(--c-cloud-blue-deep);
       font-family: var(--font-mono);
       font-size: 1.15rem;
     }
 
     .btn-reset-filters {
       font-size: 0.82rem;
-      color: var(--accent-rose);
-      background: none;
-      border: 1px solid rgba(244, 63, 94, 0.3);
+      color: var(--c-rock-dark);
+      background: var(--c-warm-sand-soft);
+      border: 1px solid var(--c-warm-sand);
       padding: 4px 12px;
       border-radius: var(--radius-full);
       cursor: pointer;
       transition: var(--transition);
+      font-weight: 600;
     }
 
     .btn-reset-filters:hover {
-      background: rgba(244, 63, 94, 0.1);
+      background: var(--c-warm-sand);
+      border-color: var(--c-rock-grey);
     }
 
-    /* Tools Grid */
+    /* ============================================================
+       Tools Grid: 半透明白玻璃卡片，浮在44px方格紙上
+       ============================================================ */
     .tools-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
@@ -523,24 +765,30 @@
     }
 
     .tool-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
       border-radius: var(--radius-lg);
       padding: 24px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: var(--transition);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
+      box-shadow: var(--glass-shadow);
     }
 
     .tool-card:hover {
-      border-color: var(--border-active);
-      background: var(--bg-card-hover);
+      transform: translateY(-6px);
+      background: var(--glass-bg-hover);
+      border-color: var(--c-cloud-blue);
+      box-shadow: var(--glass-shadow-hover);
     }
 
     .tool-card.is-favorite {
-      border-color: rgba(245, 158, 11, 0.4);
+      border-color: rgba(217, 201, 177, 0.9);
+      box-shadow: 0 0 0 1px rgba(217, 201, 177, 0.6), var(--glass-shadow);
     }
 
     .tool-card-header {
@@ -551,22 +799,54 @@
       gap: 12px;
     }
 
+    /* 卡片分類徽章 (與頂部四大色、三大紋理一脈相承) */
     .cat-badge {
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 700;
       padding: 4px 10px;
       border-radius: var(--radius-full);
       display: inline-flex;
       align-items: center;
       gap: 4px;
+      letter-spacing: 0.02em;
     }
 
-    .badge-cat1 { background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); }
-    .badge-cat2 { background: rgba(139, 92, 246, 0.15); color: #8b5cf6; border: 1px solid rgba(139, 92, 246, 0.3); }
-    .badge-cat3 { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); }
-    .badge-cat4 { background: rgba(236, 72, 153, 0.15); color: #ec4899; border: 1px solid rgba(236, 72, 153, 0.3); }
-    .badge-cat5 { background: rgba(14, 165, 233, 0.15); color: #0ea5e9; border: 1px solid rgba(14, 165, 233, 0.3); }
-    .badge-cat6 { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4); }
+    /* cat6: 自製網站 (Step 1 · 實心 雲霧藍) */
+    .badge-cat6 {
+      background: var(--c-cloud-blue);
+      color: #ffffff;
+      border: 1px solid var(--c-cloud-blue-deep);
+    }
+    /* cat1: 綜合平台 (Step 2 · 斜紋 暖沙米) */
+    .badge-cat1 {
+      background: repeating-linear-gradient(45deg, var(--c-warm-sand), var(--c-warm-sand) 5px, var(--c-cream-white) 5px, var(--c-cream-white) 10px);
+      color: var(--c-rock-dark);
+      border: 1px solid var(--c-warm-sand);
+    }
+    /* cat4: 創意遊戲 (Step 3 · 漸變 雲霧藍 ↔ 暖沙米) */
+    .badge-cat4 {
+      background: linear-gradient(135deg, rgba(144, 175, 197, 0.5) 0%, rgba(217, 201, 177, 0.6) 100%);
+      color: var(--c-rock-dark);
+      border: 1px solid var(--c-cloud-blue);
+    }
+    /* cat3: 測驗班管 (Step 4 · 實心 暖沙米) */
+    .badge-cat3 {
+      background: var(--c-warm-sand);
+      color: var(--c-rock-dark);
+      border: 1px solid rgba(142, 132, 122, 0.35);
+    }
+    /* cat2: 學科特教 (Step 5 · 斜紋 雲霧藍) */
+    .badge-cat2 {
+      background: repeating-linear-gradient(-45deg, rgba(144, 175, 197, 0.45), rgba(144, 175, 197, 0.45) 5px, rgba(245, 241, 234, 0.85) 5px, rgba(245, 241, 234, 0.85) 10px);
+      color: var(--c-rock-dark);
+      border: 1px solid var(--c-cloud-blue);
+    }
+    /* cat5: 行政評語 (Step 6 · 漸變 岩灰 ↔ 雲霧藍) */
+    .badge-cat5 {
+      background: linear-gradient(135deg, var(--c-rock-grey) 0%, var(--c-cloud-blue) 100%);
+      color: #ffffff;
+      border: 1px solid var(--c-rock-grey);
+    }
 
     .btn-fav {
       background: none;
@@ -580,11 +860,12 @@
     }
 
     .btn-fav:hover {
-      color: var(--accent-amber);
+      color: var(--accent-star);
+      transform: scale(1.15);
     }
 
     .btn-fav.active {
-      color: var(--accent-amber);
+      color: var(--accent-star);
     }
 
     .tool-title {
@@ -616,11 +897,12 @@
 
     .card-tag {
       font-size: 0.75rem;
-      padding: 2px 8px;
+      padding: 3px 9px;
       border-radius: 6px;
-      background: var(--badge-bg);
-      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.85);
+      color: var(--text-secondary);
       border: 1px solid var(--border-subtle);
+      font-weight: 500;
     }
 
     .tool-footer {
@@ -635,7 +917,7 @@
     .btn-launch {
       flex: 1;
       padding: 10px 16px;
-      background: var(--primary);
+      background: var(--c-cloud-blue);
       color: #ffffff;
       border: none;
       border-radius: var(--radius-md);
@@ -648,15 +930,18 @@
       gap: 6px;
       text-decoration: none;
       transition: var(--transition);
+      box-shadow: 0 2px 8px rgba(144, 175, 197, 0.35);
     }
 
     .btn-launch:hover {
-      background: var(--primary-hover);
+      background: var(--c-cloud-blue-deep);
+      box-shadow: 0 4px 14px rgba(144, 175, 197, 0.5);
+      transform: translateY(-1px);
     }
 
     .btn-copy-link {
       padding: 10px 14px;
-      background: var(--bg-body);
+      background: rgba(255, 255, 255, 0.8);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
       color: var(--text-secondary);
@@ -669,8 +954,10 @@
     }
 
     .btn-copy-link:hover {
-      border-color: var(--text-muted);
-      color: var(--text-primary);
+      border-color: var(--primary);
+      color: var(--c-cloud-blue-deep);
+      background: #ffffff;
+      transform: translateY(-1px);
     }
 
     /* Links badge */
@@ -684,7 +971,7 @@
       font-size: 0.75rem;
       padding: 3px 8px;
       border-radius: var(--radius-sm);
-      background: var(--badge-bg);
+      background: rgba(255, 255, 255, 0.8);
       border: 1px solid var(--border-subtle);
       color: var(--text-secondary);
       text-decoration: none;
@@ -695,10 +982,11 @@
     }
     .extra-link-pill:hover {
       border-color: var(--primary);
-      color: var(--primary);
+      color: var(--c-cloud-blue-deep);
+      background: #ffffff;
     }
 
-    /* List View */
+    /* List View: 緊湊清單視圖 (同樣具備半透明白玻璃與浮動效果) */
     .tools-list-view {
       display: flex;
       flex-direction: column;
@@ -706,20 +994,25 @@
     }
 
     .tool-list-row {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
       border-radius: var(--radius-md);
       padding: 16px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
-      transition: var(--transition);
+      transition: all 0.22s ease;
+      box-shadow: var(--glass-shadow);
     }
 
     .tool-list-row:hover {
-      background: var(--bg-card-hover);
-      border-color: var(--border-active);
+      background: var(--glass-bg-hover);
+      border-color: var(--c-cloud-blue);
+      transform: translateY(-3px);
+      box-shadow: var(--glass-shadow-hover);
     }
 
     .list-info-main {
@@ -757,10 +1050,10 @@
     }
 
     mark.highlight {
-      background: rgba(16, 185, 129, 0.35);
+      background: rgba(144, 175, 197, 0.45);
       color: inherit;
-      padding: 0 2px;
-      border-radius: 2px;
+      padding: 0 3px;
+      border-radius: 3px;
     }
 
     .empty-state {
@@ -780,7 +1073,7 @@
     }
 
     /* ============================================================
-       WATERMARK: PURE FLAT SEMI-TRANSPARENT PILL (NO GREEN BG, LARGER FONT)
+       WATERMARK: PURE 2D SEMI-TRANSPARENT WHITE GLASS PILL
        ============================================================ */
     .watermark-container {
       position: fixed;
@@ -797,43 +1090,40 @@
       align-items: center;
       justify-content: center;
       padding: 9px 24px;
-      background: rgba(15, 23, 42, 0.72);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border-subtle);
       border-radius: 9999px;
-      color: #ffffff;
+      color: var(--text-primary);
       font-size: 1.05rem;
       font-weight: 700;
       letter-spacing: 0.04em;
-      opacity: 0.85;
-      transition: opacity 0.2s ease, background-color 0.2s ease;
+      box-shadow: 0 8px 24px -4px rgba(142, 132, 122, 0.2);
+      transition: all 0.22s ease;
     }
 
     .watermark-pill:hover {
-      opacity: 1;
-      background: rgba(15, 23, 42, 0.9);
-      border-color: rgba(255, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.98);
+      border-color: var(--c-cloud-blue);
+      color: var(--c-cloud-blue-deep);
+      box-shadow: 0 12px 28px -4px rgba(144, 175, 197, 0.35);
+      transform: translateY(-2px);
     }
 
-    [data-theme="light"] .watermark-pill {
-      background: rgba(15, 23, 42, 0.75);
-      border-color: rgba(255, 255, 255, 0.2);
-      color: #ffffff;
-    }
-
-    /* Toast */
+    /* Toast Notification */
     .toast-container {
       position: fixed;
       bottom: 30px;
       left: 50%;
       transform: translateX(-50%) translateY(100px);
-      background: var(--bg-surface-elevated);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
       color: var(--text-primary);
       border: 1px solid var(--border-active);
       padding: 12px 24px;
       border-radius: var(--radius-full);
-      box-shadow: var(--shadow-md);
+      box-shadow: var(--glass-shadow-hover);
       font-size: 0.92rem;
       font-weight: 600;
       display: flex;
@@ -850,12 +1140,13 @@
       opacity: 1;
     }
 
-    /* Author Modal */
+    /* Author Modal: 半透明白玻璃彈窗 */
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.65);
-      backdrop-filter: blur(6px);
+      background: rgba(53, 47, 41, 0.45);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -872,13 +1163,16 @@
     }
 
     .modal-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.95);
       border-radius: var(--radius-lg);
       max-width: 500px;
       width: 100%;
       padding: 30px;
       position: relative;
+      box-shadow: 0 24px 60px -10px rgba(142, 132, 122, 0.35);
     }
 
     .modal-close {
@@ -897,7 +1191,7 @@
       .navbar { flex-direction: column; align-items: flex-start; gap: 16px; }
       .nav-actions { width: 100%; justify-content: space-between; }
       .watermark-container { bottom: 14px; right: 16px; }
-      .watermark-img { height: 28px; }
+      .watermark-pill { font-size: 0.92rem; padding: 7px 18px; }
     }
   </style>
 </head>
@@ -926,56 +1220,146 @@
       </div>
     </header>
 
-    <!-- KPI Stats Summary Cards (Strict Category match) -->
+    <!-- KPI Stats Summary Cards: 頂部指標按類別排成遞增的階梯色塊 (實心、斜紋、漸變) -->
     <section class="stats-grid" id="statsGrid">
-      <div class="stat-card" data-cat="all">
+      <!-- 總覽頂點：全部收錄 -->
+      <div class="stat-card stat-card-total" data-cat="all" title="點擊檢視全部收錄工具">
+        <div class="step-color-bar bar-total pattern-grad-total"></div>
         <div class="stat-header">
-          <span>全部收錄工具</span>
-          <span class="stat-badge" style="background: var(--primary-light); color: var(--primary);">TOTAL</span>
+          <span class="stat-cat-title">全部收錄工具</span>
+          <span class="stat-badge badge-total">全庫總覽</span>
         </div>
         <div class="stat-value" id="statTotalCount">120</div>
+        <div class="stat-step-footer">
+          <span>全庫 6 大分類</span>
+          <span>120 款工具</span>
+        </div>
       </div>
-      <div class="stat-card" data-cat="自製網站">
+
+      <!-- 階梯 01 (3 款) · 實心 雲霧藍 -->
+      <div class="stat-card card-step-1" data-cat="自製網站" title="點擊篩選：自製網站">
+        <div class="step-color-bar bar-step-1 pattern-solid-blue"></div>
         <div class="stat-header">
-          <span>🌐 自製網站</span>
-          <span class="stat-badge badge-cat6">CAT 6</span>
+          <span class="stat-cat-title">🌐 自製網站</span>
+          <span class="stat-badge badge-pattern-solid">階梯 01 · 實心</span>
         </div>
         <div class="stat-value" id="statCat6Count">3</div>
+        <div class="stat-step-footer">
+          <div class="mini-step-meter meter-step-1">
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+          </div>
+          <span>階梯 1 (3 款)</span>
+        </div>
       </div>
-      <div class="stat-card" data-cat="🛠️ 一、綜合教學資源地圖與平台">
+
+      <!-- 階梯 02 (16 款) · 斜紋 暖沙米 -->
+      <div class="stat-card card-step-2" data-cat="🛠️ 一、綜合教學資源地圖與平台" title="點擊篩選：綜合資源平台">
+        <div class="step-color-bar bar-step-2 pattern-stripe-sand"></div>
         <div class="stat-header">
-          <span>🛠️ 綜合資源平台</span>
-          <span class="stat-badge badge-cat1">CAT 1</span>
+          <span class="stat-cat-title">🛠️ 綜合資源平台</span>
+          <span class="stat-badge badge-pattern-stripe">階梯 02 · 斜紋</span>
         </div>
         <div class="stat-value" id="statCat1Count">16</div>
-      </div>
-      <div class="stat-card" data-cat="📚 二、學科教材、特教與專業學習資源">
-        <div class="stat-header">
-          <span>📚 學科與特教</span>
-          <span class="stat-badge badge-cat2">CAT 2</span>
+        <div class="stat-step-footer">
+          <div class="mini-step-meter meter-step-2">
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+          </div>
+          <span>階梯 2 (16 款)</span>
         </div>
-        <div class="stat-value" id="statCat2Count">24</div>
       </div>
-      <div class="stat-card" data-cat="📝 三、測驗評量、審題與課堂管理">
+
+      <!-- 階梯 03 (22 款) · 漸變 雲霧藍 ↔ 暖沙米 -->
+      <div class="stat-card card-step-3" data-cat="🎨 四、創意生成、提示詞與趣味遊戲" title="點擊篩選：創意生成與遊戲">
+        <div class="step-color-bar bar-step-3 pattern-grad-blue-sand"></div>
         <div class="stat-header">
-          <span>📝 評量與班管</span>
-          <span class="stat-badge badge-cat3">CAT 3</span>
-        </div>
-        <div class="stat-value" id="statCat3Count">23</div>
-      </div>
-      <div class="stat-card" data-cat="🎨 四、創意生成、提示詞與趣味遊戲">
-        <div class="stat-header">
-          <span>🎨 創意提示遊戲</span>
-          <span class="stat-badge badge-cat4">CAT 4</span>
+          <span class="stat-cat-title">🎨 創意提示遊戲</span>
+          <span class="stat-badge badge-pattern-grad">階梯 03 · 漸變</span>
         </div>
         <div class="stat-value" id="statCat4Count">22</div>
+        <div class="stat-step-footer">
+          <div class="mini-step-meter meter-step-3">
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+          </div>
+          <span>階梯 3 (22 款)</span>
+        </div>
       </div>
-      <div class="stat-card" data-cat="📂 五、行政、評語與 NotebookLM 進階工具">
+
+      <!-- 階梯 04 (23 款) · 實心 暖沙米 -->
+      <div class="stat-card card-step-4" data-cat="📝 三、測驗評量、審題與課堂管理" title="點擊篩選：測驗評量與班管">
+        <div class="step-color-bar bar-step-4 pattern-solid-sand"></div>
         <div class="stat-header">
-          <span>📂 行政與評語</span>
-          <span class="stat-badge badge-cat5">CAT 5</span>
+          <span class="stat-cat-title">📝 評量與班管</span>
+          <span class="stat-badge badge-pattern-solid-sand">階梯 04 · 實心</span>
+        </div>
+        <div class="stat-value" id="statCat3Count">23</div>
+        <div class="stat-step-footer">
+          <div class="mini-step-meter meter-step-4">
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+          </div>
+          <span>階梯 4 (23 款)</span>
+        </div>
+      </div>
+
+      <!-- 階梯 05 (24 款) · 斜紋 雲霧藍 -->
+      <div class="stat-card card-step-5" data-cat="📚 二、學科教材、特教與專業學習資源" title="點擊篩選：學科與特教">
+        <div class="step-color-bar bar-step-5 pattern-stripe-blue"></div>
+        <div class="stat-header">
+          <span class="stat-cat-title">📚 學科與特教</span>
+          <span class="stat-badge badge-pattern-stripe">階梯 05 · 斜紋</span>
+        </div>
+        <div class="stat-value" id="statCat2Count">24</div>
+        <div class="stat-step-footer">
+          <div class="mini-step-meter meter-step-5">
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+          </div>
+          <span>階梯 5 (24 款)</span>
+        </div>
+      </div>
+
+      <!-- 階梯 06 (32 款) · 漸變 岩灰 ↔ 雲霧藍 -->
+      <div class="stat-card card-step-6" data-cat="📂 五、行政、評語與 NotebookLM 進階工具" title="點擊篩選：行政評語與 NotebookLM">
+        <div class="step-color-bar bar-step-6 pattern-grad-grey-blue"></div>
+        <div class="stat-header">
+          <span class="stat-cat-title">📂 行政與評語</span>
+          <span class="stat-badge badge-pattern-grad">階梯 06 · 漸變</span>
         </div>
         <div class="stat-value" id="statCat5Count">32</div>
+        <div class="stat-step-footer">
+          <div class="mini-step-meter meter-step-6">
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+            <span class="step-unit"></span>
+          </div>
+          <span>階梯 6 (32 款)</span>
+        </div>
       </div>
     </section>
 
@@ -1189,10 +1573,10 @@
     const modalCloseBtn = document.getElementById('modalCloseBtn');
     const modalConfirmBtn = document.getElementById('modalConfirmBtn');
 
-    // Theme Switch
-    let currentTheme = 'dark';
+    // Theme Switch (預設為奶霜白方格紙與半透明白玻璃質感)
+    let currentTheme = 'light';
     try {
-      currentTheme = localStorage.getItem('yc_ai_theme') || 'dark';
+      currentTheme = localStorage.getItem('yc_ai_theme') || 'light';
     } catch(e) {}
     document.documentElement.setAttribute('data-theme', currentTheme);
 
@@ -1397,6 +1781,16 @@
 
       const hasActiveFilters = currentFilter.search || currentFilter.category !== 'all' || currentFilter.tag || currentFilter.favoritesOnly;
       btnResetAllFilters.style.display = hasActiveFilters ? 'inline-block' : 'none';
+
+      // Sync active state on top stats cards
+      document.querySelectorAll('#statsGrid .stat-card').forEach(card => {
+        const cat = card.getAttribute('data-cat');
+        if (cat === currentFilter.category && !currentFilter.favoritesOnly) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
 
       if (filtered.length === 0) {
         toolsContainer.innerHTML = '';
