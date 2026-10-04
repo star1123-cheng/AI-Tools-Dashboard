@@ -18,24 +18,6 @@
     ]
   },
   {
-    "id": "3e47654a-0ad7-804b-8d57-fb197f2999d6",
-    "name": "Class 602 班親會太空艙",
-    "category": "自製網站",
-    "desc": "留言板功能",
-    "rawLink": "https://star1123-cheng.github.io/class602-space-capsule/",
-    "primaryUrl": "https://star1123-cheng.github.io/class602-space-capsule/",
-    "links": [
-      {
-        "label": "GitHub 網站 🌐",
-        "url": "https://star1123-cheng.github.io/class602-space-capsule/"
-      }
-    ],
-    "tags": [
-      "班級經營",
-      "自製網站"
-    ]
-  },
-  {
     "id": "3e47654a-0ad7-8056-bc69-dd42f0011461",
     "name": "大電視觸控雙人拔河對戰遊戲",
     "category": "自製網站",
