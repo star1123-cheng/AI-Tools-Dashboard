@@ -36,6 +36,25 @@
     ]
   },
   {
+    "id": "3f07654a-0ad7-803b-a268-c4d7519b3c2e",
+    "name": "色境 ColorRealm",
+    "category": "自製網站",
+    "desc": "配色推薦 PWA，選色自動推薦主色、輔色、底色、字色與點綴色",
+    "rawLink": "https://star1123-cheng.github.io/color-design-app/",
+    "primaryUrl": "https://star1123-cheng.github.io/color-design-app/",
+    "links": [
+      {
+        "label": "GitHub 網站 🌐",
+        "url": "https://star1123-cheng.github.io/color-design-app/"
+      }
+    ],
+    "tags": [
+      "自製網站",
+      "簡報",
+      "UI"
+    ]
+  },
+  {
     "id": "3cb7654a-0ad7-8025-90f5-ccbba1f45aa9",
     "name": "照片去識別化程式",
     "category": "📂 五、行政、評語與 NotebookLM 進階工具",
