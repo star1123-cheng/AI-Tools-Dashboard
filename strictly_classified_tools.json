@@ -55,6 +55,41 @@
     ]
   },
   {
+    "id": "3f57654a-0ad7-80be-8b07-dc3d255194a3",
+    "name": "寧靜時光",
+    "category": "自製網站",
+    "desc": "教師心靈工具",
+    "rawLink": "https://star1123-cheng.github.io/teacher-calm-app/",
+    "primaryUrl": "https://star1123-cheng.github.io/teacher-calm-app/",
+    "links": [
+      {
+        "label": "GitHub 網站 🌐",
+        "url": "https://star1123-cheng.github.io/teacher-calm-app/"
+      }
+    ],
+    "tags": [
+      "自製網站"
+    ]
+  },
+  {
+    "id": "3f57654a-0ad7-80ef-9bb7-e66f5e339de2",
+    "name": "譯流 YiFlow",
+    "category": "自製網站",
+    "desc": "平板、電腦專用，翻譯論文，中英同步閱讀工具",
+    "rawLink": "https://yiflow.pages.dev/",
+    "primaryUrl": "https://yiflow.pages.dev/",
+    "links": [
+      {
+        "label": "前往使用 ↗",
+        "url": "https://yiflow.pages.dev/"
+      }
+    ],
+    "tags": [
+      "自製網站",
+      "PDF 工具"
+    ]
+  },
+  {
     "id": "3cb7654a-0ad7-8025-90f5-ccbba1f45aa9",
     "name": "照片去識別化程式",
     "category": "📂 五、行政、評語與 NotebookLM 進階工具",
