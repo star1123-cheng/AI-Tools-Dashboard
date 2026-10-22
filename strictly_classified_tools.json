@@ -90,6 +90,41 @@
     ]
   },
   {
+    "id": "4007654a-0ad7-8054-af99-eb0d450c39aa",
+    "name": "班級管理平台",
+    "category": "自製網站",
+    "desc": "公開用版本，作業缺交記錄、投影看板、抽籤獎勵與卡片背包，全校導師共用免安裝網頁",
+    "rawLink": "https://star1123-cheng.github.io/class-management-school/intro.html",
+    "primaryUrl": "https://star1123-cheng.github.io/class-management-school/intro.html",
+    "links": [
+      {
+        "label": "GitHub 網站 🌐",
+        "url": "https://star1123-cheng.github.io/class-management-school/intro.html"
+      }
+    ],
+    "tags": [
+      "自製網站",
+      "班級經營"
+    ]
+  },
+  {
+    "id": "3fd7654a-0ad7-802f-85f1-c837c6f103c6",
+    "name": "VYRA｜追劇儀錶板 (邀請制)",
+    "category": "自製網站",
+    "desc": "記錄看劇進度、更新提醒",
+    "rawLink": "https://drama-tracker-jj7.pages.dev",
+    "primaryUrl": "https://drama-tracker-jj7.pages.dev",
+    "links": [
+      {
+        "label": "前往使用 ↗",
+        "url": "https://drama-tracker-jj7.pages.dev"
+      }
+    ],
+    "tags": [
+      "自製網站"
+    ]
+  },
+  {
     "id": "3cb7654a-0ad7-8025-90f5-ccbba1f45aa9",
     "name": "照片去識別化程式",
     "category": "📂 五、行政、評語與 NotebookLM 進階工具",
@@ -261,6 +296,10 @@
       {
         "label": "前往使用 ↗",
         "url": "https://crimson-wind-7a22.changsheng0612.workers.dev/"
+      },
+      {
+        "label": "介紹專文 📰",
+        "url": "https://flipedu.parenting.com.tw/article/011036"
       }
     ],
     "tags": [
@@ -2295,6 +2334,59 @@
     ],
     "tags": [
       "特殊教育"
+    ]
+  },
+  {
+    "id": "3f97654a-0ad7-80df-9283-e3ef15d67d3e",
+    "name": "ArtCraft Launcher 工作台",
+    "category": "🛠️ 一、綜合教學資源地圖與平台",
+    "desc": "開源 Adobe 創意設計軟體集合啟動台（替代 Photoshop、Illustrator 等）",
+    "rawLink": "https://getartcraft.com/apps",
+    "primaryUrl": "https://getartcraft.com/apps",
+    "links": [
+      {
+        "label": "前往使用 ↗",
+        "url": "https://getartcraft.com/apps"
+      }
+    ],
+    "tags": [
+      "UI",
+      "素養備課"
+    ]
+  },
+  {
+    "id": "3fb7654a-0ad7-80ad-9337-ca68e39adeb8",
+    "name": "成績查詢系統",
+    "category": "📂 五、行政、評語與 NotebookLM 進階工具",
+    "desc": "教學完整介紹頁，運用 Google 試算表與 GAS 打造學校與班級成績安全查詢系統",
+    "rawLink": "https://ijun-ai.com/tutor/score-inquiry/",
+    "primaryUrl": "https://ijun-ai.com/tutor/score-inquiry/",
+    "links": [
+      {
+        "label": "前往使用 ↗",
+        "url": "https://ijun-ai.com/tutor/score-inquiry/"
+      }
+    ],
+    "tags": [
+      "學校行政",
+      "試算表/GAS"
+    ]
+  },
+  {
+    "id": "3fb7654a-0ad7-809f-b1cf-fba8208f5d05",
+    "name": "拾音 Shiyin",
+    "category": "📂 五、行政、評語與 NotebookLM 進階工具",
+    "desc": "macOS 的會議紀錄 app，開源語音轉文字與智慧會議整理工具",
+    "rawLink": "https://github.com/juinwei7/Shiyin",
+    "primaryUrl": "https://github.com/juinwei7/Shiyin",
+    "links": [
+      {
+        "label": "GitHub 網站 🌐",
+        "url": "https://github.com/juinwei7/Shiyin"
+      }
+    ],
+    "tags": [
+      "學校行政"
     ]
   }
 ]
